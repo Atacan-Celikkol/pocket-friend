@@ -8,8 +8,12 @@ function App() {
         <header className={'bg-danger'}>
           Pocket Friend
         </header>
+        <div>
+
+        </div>
+
       </div>
-    </div>
+    </div >
   );
 }
 
