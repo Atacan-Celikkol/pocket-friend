@@ -45,6 +45,7 @@ class Incomes extends React.Component {
                         <th>Date</th>
                         <th>Description</th>
                         <th>Amount</th>
+                        <th>Actions</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -67,6 +68,8 @@ class Incomes extends React.Component {
                         </td>
                         <td>
                            <input id="yr-date" type="number" className={ "form-control form-control-sm" } name="amount" value={ this.state.amount } onChange={ (e) => { if (e.target.value >= 0) this.handleChange(e); } } min="0" />
+                        </td>
+                        <td>
                         </td>
                      </tr>
                   </tfoot>
