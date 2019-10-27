@@ -3,6 +3,7 @@ import Income from '../../models/income';
 import IncomeItem from './IncomeItem';
 
 let items = [];
+let updateTriggeredId = -1;
 
 class Incomes extends React.Component {
    constructor(props) {
@@ -13,6 +14,7 @@ class Incomes extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.delete = this.delete.bind(this);
+      this.update = this.update.bind(this);
 
       const incomes = JSON.parse(localStorage.getItem('Incomes'));
       if (incomes) {
@@ -39,6 +41,18 @@ class Incomes extends React.Component {
       }
    }
 
+    update(indexAtObj, obj) {
+        if (updateTriggeredId >= 0) {
+            if (indexAtObj !== undefined) {
+                items[indexAtObj] = obj;
+                localStorage.setItem('Incomes', JSON.stringify(items));
+            }
+        }
+    
+    this.setState(this.state);
+    updateTriggeredId = updateTriggeredId === -1 ? indexAtObj : -1;
+   }
+
    render() {
       return (
          <form onSubmit={this.handleSubmit}>
@@ -60,7 +74,7 @@ class Incomes extends React.Component {
                   <tbody>
                      {
                         items.map((item, i) =>
-                           <IncomeItem key={i} index={i} income={item} delete={() => this.delete(i)} />
+                           <IncomeItem key={i} index={i} income={item} delete={() => this.delete(i)} update={(i,j) => this.update(i,j)} updateTriggeredId={updateTriggeredId} />
                         )
                      }
                   </tbody>

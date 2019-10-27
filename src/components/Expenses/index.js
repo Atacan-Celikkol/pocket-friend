@@ -3,6 +3,7 @@ import Expense from '../../models/expense';
 import ExpenseItem from './ExpenseItem';
 
 let items = [];
+let updateTriggeredId = -1;
 
 class Expenses extends React.Component {
    constructor (props) {
@@ -12,6 +13,8 @@ class Expenses extends React.Component {
 
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.delete = this.delete.bind(this);
+      this.update = this.update.bind(this);
 
       const expenses = JSON.parse(localStorage.getItem('Expenses'));
       if (expenses) {
@@ -30,6 +33,26 @@ class Expenses extends React.Component {
       localStorage.setItem('Expenses', JSON.stringify(items));
    }
 
+   delete(id) {
+    if (window.confirm("Are you sure ?")) {
+       items = items.filter(x => items.indexOf(x) !== id);
+       this.setState(this.state);
+       localStorage.setItem('Expenses', JSON.stringify(items));
+    }
+ }
+
+  update(indexAtObj, obj) {
+      if (updateTriggeredId >= 0) {
+          if (indexAtObj !== undefined) {
+              items[indexAtObj] = obj;
+              localStorage.setItem('Expenses', JSON.stringify(items));
+          }
+      }
+  
+  this.setState(this.state);
+  updateTriggeredId = updateTriggeredId === -1 ? indexAtObj : -1;
+ }
+
    render() {
       return (
          <form onSubmit={ this.handleSubmit }>
@@ -45,12 +68,13 @@ class Expenses extends React.Component {
                         <th>Date</th>
                         <th>Description</th>
                         <th>Amount</th>
+                        <th>Actions</th>
                      </tr>
                   </thead>
                   <tbody>
                      {
                         items.map((item, i) =>
-                           <ExpenseItem key={ i } index={ i } expense={ item } />
+                           <ExpenseItem key={ i } index={ i } expense={ item } delete={() => this.delete(i)} update={(i,j) => this.update(i,j)} updateTriggeredId={updateTriggeredId}/>
                         )
                      }
                   </tbody>
@@ -67,6 +91,8 @@ class Expenses extends React.Component {
                         </td>
                         <td>
                            <input id="yr-date" type="number" className={ "form-control form-control-sm" } name="amount" value={ this.state.amount } onChange={ (e) => { if (e.target.value >= 0) this.handleChange(e); } } min="0" />
+                        </td>
+                        <td>
                         </td>
                      </tr>
                   </tfoot>
