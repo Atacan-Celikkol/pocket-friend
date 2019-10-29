@@ -16,10 +16,20 @@ class Expenses extends React.Component {
       this.delete = this.delete.bind(this);
       this.update = this.update.bind(this);
 
-      const expenses = JSON.parse(localStorage.getItem('Expenses'));
-      if (expenses) {
-         items = expenses;
-      }
+      // const expenses = JSON.parse(localStorage.getItem('Expenses'));
+      // if (expenses) {
+      //    items = expenses;
+      // }
+   }
+
+   componentDidMount() {
+      fetch('https://api.backendless.com/1FF6847A-E791-15A3-FFEE-DDFB60C31600/F1C73522-DD64-3A93-FF4E-67CBDEDCDF00/data/expenses')
+         .then(res => res.json())
+         .then((data) => {
+            items = data;
+            this.setState(new Expense());
+         })
+         .catch(console.log)
    }
 
    handleChange = (event) => {
@@ -34,24 +44,24 @@ class Expenses extends React.Component {
    }
 
    delete(id) {
-    if (window.confirm("Are you sure ?")) {
-       items = items.filter(x => items.indexOf(x) !== id);
-       this.setState(this.state);
-       localStorage.setItem('Expenses', JSON.stringify(items));
-    }
- }
-
-  update(indexAtObj, obj) {
-      if (updateTriggeredId >= 0) {
-          if (indexAtObj !== undefined) {
-              items[indexAtObj] = obj;
-              localStorage.setItem('Expenses', JSON.stringify(items));
-          }
+      if (window.confirm("Are you sure ?")) {
+         items = items.filter(x => items.indexOf(x) !== id);
+         this.setState(this.state);
+         localStorage.setItem('Expenses', JSON.stringify(items));
       }
-  
-  this.setState(this.state);
-  updateTriggeredId = updateTriggeredId === -1 ? indexAtObj : -1;
- }
+   }
+
+   update(indexAtObj, obj) {
+      if (updateTriggeredId >= 0) {
+         if (indexAtObj !== undefined) {
+            items[indexAtObj] = obj;
+            localStorage.setItem('Expenses', JSON.stringify(items));
+         }
+      }
+
+      this.setState(this.state);
+      updateTriggeredId = updateTriggeredId === -1 ? indexAtObj : -1;
+   }
 
    render() {
       return (
@@ -74,7 +84,7 @@ class Expenses extends React.Component {
                   <tbody>
                      {
                         items.map((item, i) =>
-                           <ExpenseItem key={ i } index={ i } expense={ item } delete={() => this.delete(i)} update={(i,j) => this.update(i,j)} updateTriggeredId={updateTriggeredId}/>
+                           <ExpenseItem key={ i } index={ i } expense={ item } delete={ () => this.delete(i) } update={ (i, j) => this.update(i, j) } updateTriggeredId={ updateTriggeredId } />
                         )
                      }
                   </tbody>
