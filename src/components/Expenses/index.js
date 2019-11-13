@@ -38,8 +38,19 @@ class Expenses extends React.Component {
 
    handleSubmit(event) {
       event.preventDefault();
-      items.push(this.state);
-      this.setState(new Expense());
+
+      fetch('https://api.backendless.com/1FF6847A-E791-15A3-FFEE-DDFB60C31600/F1C73522-DD64-3A93-FF4E-67CBDEDCDF00/data/expenses', {
+         method: 'post',
+         body: JSON.stringify(this.state)
+      })
+         .then(res => res.json())
+         .then((data) => {
+            items = data;
+            this.setState(new Expense());
+         })
+         .catch(console.log)
+
+
       localStorage.setItem('Expenses', JSON.stringify(items));
    }
 
@@ -91,13 +102,13 @@ class Expenses extends React.Component {
                   <tfoot>
                      <tr>
                         <td className={ "text-center" }>
-                           <button type="submit" className={ "btn btn-danger btn-sm btn-block" } disabled={ this.state.amount <= 0 || this.state.date === '' || this.state.text.length < 3 }>+</button>
+                           <button type="submit" className={ "btn btn-danger btn-sm btn-block" } disabled={ this.state.amount <= 0 || this.state.on_date === '' || this.state.description.length < 3 }>+</button>
                         </td>
                         <td>
-                           <input type="date" className={ "form-control form-control-sm" } name="date" onChange={ this.handleChange } defaultValue={ this.state.date } />
+                           <input type="date" className={ "form-control form-control-sm" } name="on_date" onChange={ this.handleChange } defaultValue={ this.state.on_date } />
                         </td>
                         <td>
-                           <input type="text" className={ "form-control form-control-sm" } name="text" placeholder="Please write a description" value={ this.state.text } onChange={ this.handleChange } />
+                           <input type="text" className={ "form-control form-control-sm" } name="description" placeholder="Please write a description" value={ this.state.description } onChange={ this.handleChange } />
                         </td>
                         <td>
                            <input id="yr-date" type="number" className={ "form-control form-control-sm" } name="amount" value={ this.state.amount } onChange={ (e) => { if (e.target.value >= 0) this.handleChange(e); } } min="0" />

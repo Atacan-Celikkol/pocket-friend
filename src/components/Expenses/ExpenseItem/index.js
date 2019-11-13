@@ -3,11 +3,7 @@ import React from 'react';
 class ExpenseItem extends React.Component {
     constructor (props) {
         super(props);
-        console.log(props);
-
-
         this.state = this.props.expense;
-
         this.handleChange = this.handleChange.bind(this);
     }
 
