@@ -1,7 +1,7 @@
 import React from 'react';
 
 class ExpenseItem extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
             expense: this.props.expense,
@@ -14,7 +14,7 @@ class ExpenseItem extends React.Component {
         const { target: { name, value } } = e;
         const expense = this.state.expense;
         expense[name] = name === 'amount' ? parseFloat(value) : value;
-        this.setState({ expense: expense }, () => console.log(this.state));
+        this.setState({ expense: expense });
     }
 
     changeShowUpdate() {
@@ -22,44 +22,52 @@ class ExpenseItem extends React.Component {
     }
 
     render() {
-        return (
-            <React.Fragment>
-                { !this.state.showUpdate ?
-                    <tr>
-                        <th>{ this.props.index + 1 }</th>
-                        <td>{ new Date(this.props.expense.on_date).toDateString() }</td>
-                        <td>{ this.props.expense.description }</td>
-                        <td>₺{ this.props.expense.amount }</td>
-
-                        <td>
-                            <div className={ "btn-group btn-group-sm d-flex" }>
-                                <button type="button" className={ "btn btn-info" } onClick={ () => { this.changeShowUpdate() } }>Update</button>
-                                <button type="button" className={ "btn btn-dark" } onClick={ () => { this.props.delete(); } }>Delete</button>
-                            </div>
-                        </td>
-                    </tr> :
-
-                    <tr>
-                        <th>{ this.props.index + 1 }</th>
-                        <td>
-                            <input type="date" className={ "form-control form-control-sm" } name="date" onChange={ this.handleChange } defaultValue={ this.props.expense.on_date } />
-                        </td>
-                        <td>
-                            <input type="text" className={ "form-control form-control-sm" } name="text" onChange={ this.handleChange } placeholder="Please write a description" defaultValue={ this.props.expense.description } />
-                        </td>
-                        <td>
-                            <input id="yr-date" type="number" className={ "form-control form-control-sm" } name="amount" defaultValue={ this.props.expense.amount } onChange={ (e) => { if (e.target.value >= 0) this.handleChange(e); } } min="0" />
-                        </td>
-                        <td>
-                            <div className={ "btn-group btn-group-sm d-flex" }>
-                                <button type="button" className={ "btn btn-primary" } onClick={ (e) => { this.props.update(this.state.expense); this.changeShowUpdate() } } disabled={ this.state.text !== undefined && (this.state.amount <= 0 || this.state.date === '' || this.state.text.length < 3) }>Confirm</button>
-                            </div>
-                        </td>
-                    </tr>
-                }
-            </React.Fragment>
-        );
+        return this.state.showUpdate ?
+            <UpdateRow parentProps={this.props} parentState={this.state} handleChange={(e) => this.handleChange(e)} show={() => this.changeShowUpdate()}></UpdateRow>
+            :
+            <ViewRow parentProps={this.props} show={() => this.changeShowUpdate()}></ViewRow>
     }
 }
 
 export default ExpenseItem;
+
+
+function ViewRow(props) {
+    return (
+        <tr>
+            <th>{props.parentProps.index + 1}</th>
+            <td>{new Date(props.parentProps.expense.on_date).toDateString()}</td>
+            <td>{props.parentProps.expense.description}</td>
+            <td>₺{props.parentProps.expense.amount}</td>
+
+            <td>
+                <div className={"btn-group btn-group-sm d-flex"}>
+                    <button type="button" className={"btn btn-info"} onClick={() => { props.show() }}>Update</button>
+                    <button type="button" className={"btn btn-dark"} onClick={() => { props.parentProps.delete(); }}>Delete</button>
+                </div>
+            </td>
+        </tr>
+    );
+}
+
+function UpdateRow(props) {
+    return (
+        <tr>
+            <th>{props.parentProps.index + 1}</th>
+            <td>
+                <input type="date" className={"form-control form-control-sm"} name="on_date" onChange={props.handleChange} defaultValue={props.parentProps.expense.on_date} />
+            </td>
+            <td>
+                <input type="text" className={"form-control form-control-sm"} name="description" onChange={props.handleChange} placeholder="Please write a description" defaultValue={props.parentProps.expense.description} />
+            </td>
+            <td>
+                <input type="number" className={"form-control form-control-sm"} name="amount" defaultValue={props.parentProps.expense.amount} onChange={(e) => { if (e.target.value >= 0) props.handleChange(e); }} min="0" />
+            </td>
+            <td>
+                <div className={"btn-group btn-group-sm d-flex"}>
+                    <button type="button" className={"btn btn-primary"} onClick={(e) => { props.parentProps.update(props.parentState.expense); props.show() }} disabled={props.parentState.text !== undefined && (props.parentState.amount <= 0 || props.parentState.date === '' || props.parentState.text.length < 3)}>Confirm</button>
+                </div>
+            </td>
+        </tr>
+    );
+}
