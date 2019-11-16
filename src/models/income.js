@@ -1,6 +1,6 @@
 class Income {
-   date = new Date().toISOString().split('T')[0];
-   text = '';
+   on_date = new Date().toISOString().split('T')[0];
+   description = '';
    amount = 0;
 }
 
