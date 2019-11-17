@@ -1,8 +1,10 @@
 import React from 'react';
+import { getApiUrl, getApiUrlById, getApiUrlSimple, sortTypes } from '../../config';
 import Expense from '../../models/expense';
 import ExpenseItem from './ExpenseItem';
 
 let items = [];
+const table = 'Expenses';
 
 class Expenses extends React.Component {
    constructor (props) {
@@ -21,7 +23,7 @@ class Expenses extends React.Component {
    }
 
    getExpenses() {
-      fetch('https://api.backendless.com/1FF6847A-E791-15A3-FFEE-DDFB60C31600/F1C73522-DD64-3A93-FF4E-67CBDEDCDF00/data/expenses')
+      fetch(getApiUrl(table, 'on_date', sortTypes.Descending))
          .then(res => res.json())
          .then((data) => {
             items = data;
@@ -40,7 +42,7 @@ class Expenses extends React.Component {
    }
 
    create() {
-      fetch('https://api.backendless.com/1FF6847A-E791-15A3-FFEE-DDFB60C31600/F1C73522-DD64-3A93-FF4E-67CBDEDCDF00/data/expenses', {
+      fetch(getApiUrlSimple(table), {
          method: 'post',
          body: JSON.stringify(this.state)
       })
@@ -54,7 +56,7 @@ class Expenses extends React.Component {
 
    delete(id) {
       if (window.confirm("Are you sure ?")) {
-         fetch(`https://api.backendless.com/1FF6847A-E791-15A3-FFEE-DDFB60C31600/F1C73522-DD64-3A93-FF4E-67CBDEDCDF00/data/expenses/${id}`, {
+         fetch(getApiUrlById(table, id), {
             method: 'delete'
          })
             .then(res => res.json())
@@ -67,7 +69,7 @@ class Expenses extends React.Component {
    }
 
    update(obj) {
-      fetch(`https://api.backendless.com/1FF6847A-E791-15A3-FFEE-DDFB60C31600/F1C73522-DD64-3A93-FF4E-67CBDEDCDF00/data/expenses/${obj.objectId}`, {
+      fetch(getApiUrlById(table, obj.objectId), {
          method: 'put',
          body: JSON.stringify(obj)
       })
@@ -116,7 +118,7 @@ class Expenses extends React.Component {
                            <input type="text" className={ "form-control form-control-sm" } name="description" placeholder="Please write a description" value={ this.state.description } onChange={ this.handleChange } />
                         </td>
                         <td>
-                           <input id="amount" type="number" className={ "form-control form-control-sm" } name="amount" value={ this.state.amount } onChange={ (e) => { if (e.target.value >= 0) this.handleChange(e); } } step="0.01" min="1.0" />
+                           <input id="amount" type="number" className={ "form-control form-control-sm" } name="amount" value={ this.state.amount } onChange={ (e) => { if (e.target.value >= 0) this.handleChange(e); } } step="0.01" min="0.01" />
                         </td>
                         <td>
                         </td>
