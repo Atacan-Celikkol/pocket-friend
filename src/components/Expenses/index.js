@@ -19,11 +19,11 @@ class Expenses extends React.Component {
    }
 
    componentDidMount() {
-      this.getExpenses();
+      // this.getExpenses();
    }
 
    getExpenses() {
-      fetch(getApiUrl(table, 'on_date', sortTypes.Descending))
+      fetch(getApiUrl(table, null, 'on_date', sortTypes.Descending))
          .then(res => res.json())
          .then((data) => {
             items = data;
