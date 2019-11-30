@@ -66,17 +66,24 @@ class Incomes extends React.Component {
       return (
          <div>
 
-            <DateRangePicker
-               startDate={ this.state.startDate } // momentPropTypes.momentObj or null,
-               startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-               endDate={ this.state.endDate } // momentPropTypes.momentObj or null,
-               endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-               onDatesChange={ ({ startDate, endDate }) => this.setState({ startDate, endDate }) } // PropTypes.func.isRequired,
-               focusedInput={ this.state.focusedInput } // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-               onFocusChange={ focusedInput => this.setState({ focusedInput }) } // PropTypes.func.isRequired,
-               isOutsideRange={ () => false }
-               onClose={ () => setTimeout(() => this.getIncomes(), 100) }
-            />
+            <div className={ 'row' }>
+               <div className={ 'col' }>
+                  <div className={ 'bg-warning float-right text-center text-white' }>
+                     <h4>Active Date Range</h4>
+                     <DateRangePicker
+                        startDate={ this.state.startDate } // momentPropTypes.momentObj or null,
+                        startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                        endDate={ this.state.endDate } // momentPropTypes.momentObj or null,
+                        endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                        onDatesChange={ ({ startDate, endDate }) => this.setState({ startDate, endDate }) } // PropTypes.func.isRequired,
+                        focusedInput={ this.state.focusedInput } // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                        onFocusChange={ focusedInput => this.setState({ focusedInput }) } // PropTypes.func.isRequired,
+                        isOutsideRange={ () => false }
+                        onClose={ () => setTimeout(() => this.getIncomes(), 100) }
+                     />
+                  </div>
+               </div>
+            </div>
 
             <h3 className={ "text-success" }>
                Incomes
