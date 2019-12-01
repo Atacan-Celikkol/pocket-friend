@@ -65,11 +65,10 @@ class Incomes extends React.Component {
    render() {
       return (
          <div>
-
-            <div className={ 'row' }>
-               <div className={ 'col' }>
-                  <div className={ 'bg-warning float-right text-center text-white' }>
-                     <h4>Active Date Range</h4>
+            <div className={ 'd-flex' }>
+               <h3 className={ "text-success" }>Incomes</h3>
+               <div className={ 'w-100' }>
+                  <div className={ 'float-right' }>
                      <DateRangePicker
                         startDate={ this.state.startDate } // momentPropTypes.momentObj or null,
                         startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
@@ -84,10 +83,6 @@ class Incomes extends React.Component {
                   </div>
                </div>
             </div>
-
-            <h3 className={ "text-success" }>
-               Incomes
-            </h3>
             <div className={ 'table-responsive' }>
                <table className={ "table table-hover table-bordered" }>
                   <thead className={ "bg-success text-light" }>
