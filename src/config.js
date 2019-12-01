@@ -15,7 +15,7 @@ export function getApiUrlSimple(tableName, query = null) {
 }
 
 export function getApiUrl(tableName, dateRange = new DateRange(), sortBy, sortType = sortTypes.Ascending) {
-   return `${api_data_url + tableName}?sortBy=${sortBy + sortType}&where=on_date>=${dateRange.startDate.valueOf()}&&on_date<=${dateRange.endDate.valueOf()}`;
+   return `${api_data_url + tableName}?pageSize=100&sortBy=${sortBy + sortType}&where=on_date>=${dateRange.startDate.valueOf()}%26%26on_date<=${dateRange.endDate.valueOf()}`;
 }
 
 export function getApiUrlById(tableName, id) {
