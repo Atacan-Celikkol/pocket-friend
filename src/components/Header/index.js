@@ -7,7 +7,7 @@ class Header extends Component {
          <div className={ 'jumbotron' }>
             <div className={ 'container' }>
                <h1 className={ 'display-4' }>Pocket Friend</h1>
-               <p className={ 'lead' }>Your pocket's best friend!</p>
+               <p className={ 'lead' }>Your pocket's best friend! 😊</p>
             </div>
          </div>
       );

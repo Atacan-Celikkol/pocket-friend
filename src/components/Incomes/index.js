@@ -78,8 +78,8 @@ class Incomes extends React.Component {
                         focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                         onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                         isOutsideRange={() => false}
-                        small={() => true}
-                        withPortal={() => true}
+                        small={true}
+                        withPortal={true}
                         numberOfMonths={1}
                         onClose={() => setTimeout(() => this.getIncomes(), 100)}
                      />
