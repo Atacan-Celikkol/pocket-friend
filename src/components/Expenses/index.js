@@ -77,7 +77,10 @@ class Expenses extends React.Component {
                         onDatesChange={ ({ startDate, endDate }) => this.setState({ startDate, endDate }) } // PropTypes.func.isRequired,
                         focusedInput={ this.state.focusedInput } // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                         onFocusChange={ focusedInput => this.setState({ focusedInput }) } // PropTypes.func.isRequired,
-                        isOutsideRange={ () => false }
+                        isOutsideRange={ () => false }                        
+                        small={() => true}
+                        withPortal={() => true}
+                        numberOfMonths={1}
                         onClose={ () => setTimeout(() => this.getExpenses(), 100) }
                      />
                   </div>

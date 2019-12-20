@@ -11,7 +11,7 @@ let items = [];
 const table = 'Incomes';
 
 class Incomes extends React.Component {
-   constructor (props) {
+   constructor(props) {
       super(props);
 
       this.state = new DateRange();
@@ -65,27 +65,30 @@ class Incomes extends React.Component {
    render() {
       return (
          <div>
-            <div className={ 'd-flex' }>
-               <h3 className={ "text-success" }>Incomes</h3>
-               <div className={ 'w-100' }>
-                  <div className={ 'float-right' }>
+            <div className={'d-flex'}>
+               <h3 className={"text-success"}>Incomes</h3>
+               <div className={'w-100'}>
+                  <div className={'float-right'}>
                      <DateRangePicker
-                        startDate={ this.state.startDate } // momentPropTypes.momentObj or null,
+                        startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                         startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                        endDate={ this.state.endDate } // momentPropTypes.momentObj or null,
+                        endDate={this.state.endDate} // momentPropTypes.momentObj or null,
                         endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                        onDatesChange={ ({ startDate, endDate }) => this.setState({ startDate, endDate }) } // PropTypes.func.isRequired,
-                        focusedInput={ this.state.focusedInput } // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                        onFocusChange={ focusedInput => this.setState({ focusedInput }) } // PropTypes.func.isRequired,
-                        isOutsideRange={ () => false }
-                        onClose={ () => setTimeout(() => this.getIncomes(), 100) }
+                        onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                        isOutsideRange={() => false}
+                        small={() => true}
+                        withPortal={() => true}
+                        numberOfMonths={1}
+                        onClose={() => setTimeout(() => this.getIncomes(), 100)}
                      />
                   </div>
                </div>
             </div>
-            <div className={ 'table-responsive' }>
-               <table className={ "table table-hover table-bordered" }>
-                  <thead className={ "bg-success text-light" }>
+            <div className={'table-responsive'}>
+               <table className={"table table-hover table-bordered"}>
+                  <thead className={"bg-success text-light"}>
                      <tr>
                         <th>#</th>
                         <th>Date</th>
@@ -97,12 +100,12 @@ class Incomes extends React.Component {
                   <tbody>
                      {
                         items.map((item, i) =>
-                           <IncomeItem key={ i } index={ i } income={ item } delete={ () => this.delete(item.objectId) } update={ (income) => this.update(income) } />
+                           <IncomeItem key={i} index={i} income={item} delete={() => this.delete(item.objectId)} update={(income) => this.update(income)} />
                         )
                      }
                   </tbody>
                   <tfoot>
-                     <IncomeCreate getIncomes={ this.getIncomes } />
+                     <IncomeCreate getIncomes={this.getIncomes} />
                   </tfoot>
                </table>
             </div>
