@@ -1,0 +1,38 @@
+.expense-item {
+   margin       : 0 0 10px 0;
+   border       : 1px solid #ddd;
+   border-radius: 0 0 5px 5px;
+
+   .expense-item-header {
+      background : #ff5050;
+      color      : white;
+      display    : flex;
+      padding    : 5px;
+      align-items: center;
+
+      h5 {
+         margin: 0
+      }
+
+      div {
+         position: absolute;
+         right   : 25px;
+
+         img {
+            height     : 20px;
+            margin-left: 3px;
+         }
+      }
+   }
+
+   .expense-item-body {
+      display    : flex;
+      padding    : 5px;
+      align-items: center;
+
+      b {
+         position: absolute;
+         right   : 25px;
+      }
+   }
+}
