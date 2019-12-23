@@ -64,22 +64,27 @@
 
 
             button {
-               border             : 1px dashed #fff;
+               border             : 1px solid #eee;
                border-radius      : 50%;
                height             : 27px;
                width              : 27px;
                outline            : 0;
-               background-size    : 17px;
+               background-size    : 15px;
                background-repeat  : no-repeat;
                background-position: center;
 
+               &:hover {
+                  transition: 250ms;
+                  transform : scale(1.2);
+               }
+
                &#delete-btn {
-                  background-color: #ff5050;
+                  background-color: #ff6b6b;
                   background-image: url('../../../assets/delete.svg');
                }
 
                &#update-btn {
-                  background-color: #FFDE00;
+                  background-color: #ffc46b;
                   background-image: url('../../../assets/edit.svg');
                }
             }
