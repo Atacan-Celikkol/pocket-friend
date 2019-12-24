@@ -10,13 +10,13 @@
 }
 
 
-.expense-item {
+.income-item {
    margin       : 0 0 10px 0;
    border       : 1px solid #ddd;
    border-radius: 0 0 5px 5px;
 
-   .expense-item-header {
-      background : var(--danger);
+   .income-item-header {
+      background : var(--success);
       color      : white;
       display    : flex;
       padding    : 5px;
@@ -37,7 +37,7 @@
       }
    }
 
-   .expense-item-body {
+   .income-item-body {
       display    : flex;
       padding    : 5px;
       align-items: center;

@@ -1,0 +1,29 @@
+.summaries {
+    display              : grid;
+    grid-template-columns: auto auto auto;
+
+    div {
+        padding      : 10px 0;
+        border       : 1px solid #eee;
+        border-left  : 0;
+        border-bottom: 0;
+        color        : #333;
+
+        h4 {
+            margin: 0;
+        }
+
+        &#incomes {
+            background-color: lighten($color: #5F0, $amount: 40);
+        }
+
+        &#expenses {
+            background-color: lighten($color: #F00, $amount: 40);
+        }
+
+        &#balance {
+            background-color: lighten($color: #FF0, $amount: 40);
+            border-right    : 0;
+        }
+    }
+}
