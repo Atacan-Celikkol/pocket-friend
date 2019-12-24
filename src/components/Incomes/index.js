@@ -3,11 +3,10 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { getApiUrlById } from '../../config';
 import DateRange from '../../models/date-range';
+import { getApiUrlById } from '../../services/ApiService';
 import IncomeItem from './IncomeItem';
 
-let totalIncomes = 0;
 const table = 'Incomes';
 const swal = withReactContent(Swal)
 

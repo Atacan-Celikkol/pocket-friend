@@ -2,11 +2,6 @@ import React from 'react';
 import './Summary.scss';
 
 class Summary extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-
     render() {
         return (
             <div className={'summaries'}>

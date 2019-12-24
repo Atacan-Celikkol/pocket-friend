@@ -1,6 +1,6 @@
 import React from 'react';
-import { getApiUrlSimple } from '../../config';
 import Income from '../../models/income';
+import { getApiUrlSimple } from '../../services/ApiService';
 
 const table = 'Incomes';
 class IncomeCreate extends React.Component {

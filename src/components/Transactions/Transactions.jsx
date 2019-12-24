@@ -2,42 +2,30 @@ import React from 'react';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import { getApiUrl, sortTypes } from '../../config';
 import DateRange from '../../models/date-range';
+import { getApiUrl, sortTypes } from '../../services/ApiService';
+import { GetIncomesAsync } from '../../services/IncomeService';
 import Expenses from '../Expenses/index';
 import Incomes from '../Incomes/index';
 import Summary from './Summary/Summary';
 import './Transactions.scss';
 
+
 let incomes = [];
 let expenses = [];
 let incomesTotal = 0;
 let expensesTotal = 0;
-const swal = withReactContent(Swal)
 
 class Transactions extends React.Component {
     constructor(props) {
         super(props)
         this.state = new DateRange();
         this.getTransactions = this.getTransactions.bind(this);
-
-        swal.fire({
-            title: <p>Hello World</p>,
-            footer: 'Copyright 2018',
-            onOpen: () => {
-              // `swal` is a subclass of `Swal`
-              //   with all the same instance & static methods
-              swal.clickConfirm()
-            }
-          }).then(() => {
-            return swal.fire(<p>Shorthand works too</p>)
-          })
+        GetIncomesAsync(this.state, 'on_date', sortTypes.Descending);
     }
 
     componentDidMount() {
-        this.getTransactions();
+        // this.getTransactions();
     }
 
     getTransactions() {

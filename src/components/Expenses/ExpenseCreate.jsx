@@ -1,6 +1,6 @@
 import React from 'react';
-import { getApiUrlSimple } from '../../config';
 import Expense from '../../models/expense';
+import { getApiUrlSimple } from '../../services/ApiService';
 
 const table = 'Expenses';
 class ExpenseCreate extends React.Component {

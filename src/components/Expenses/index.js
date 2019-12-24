@@ -1,13 +1,11 @@
 import React from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { getApiUrlById } from '../../config';
 import DateRange from '../../models/date-range';
+import { getApiUrlById } from '../../services/ApiService';
 import ExpenseItem from './ExpenseItem';
 
-let totalExpenses = 0;
 const table = 'Expenses';
-
 class Expenses extends React.Component {
    constructor(props) {
       super(props);

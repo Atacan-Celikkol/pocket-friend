@@ -1,4 +1,4 @@
-import DateRange from "./models/date-range";
+import DateRange from "../models/date-range";
 
 const api_base_url = 'https://api.backendless.com/';
 const api_key = '1FF6847A-E791-15A3-FFEE-DDFB60C31600';
@@ -20,4 +20,8 @@ export function getApiUrl(tableName, dateRange = new DateRange(), sortBy, sortTy
 
 export function getApiUrlById(tableName, id) {
    return `${api_data_url + tableName}/${id}`;
+}
+
+export default {
+   getApiUrl
 }
