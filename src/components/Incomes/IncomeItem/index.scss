@@ -72,20 +72,20 @@
                background-size    : 15px;
                background-repeat  : no-repeat;
                background-position: center;
+               font-weight        : lighter;
 
                &:hover {
                   transition: 250ms;
                   transform : scale(1.2);
+                  color     : white;
                }
 
                &#delete-btn {
                   background-color: var(--danger);
-                  background-image: url('../../../assets/delete.svg');
                }
 
                &#update-btn {
-                  background-color: var(--warning);
-                  background-image: url('../../../assets/edit.svg');
+                  background-color   : var(--warning);
                }
             }
          }

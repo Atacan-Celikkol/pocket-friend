@@ -49,8 +49,12 @@ function ViewRow(props) {
                     <div id="right-side">
                         <b>{props.parentProps.expense.amount}TL</b>
                         <div id="action-buttons-container">
-                            <button id="update-btn"></button>
-                            <button id="delete-btn"></button>
+                            <button id="update-btn">
+                                <i className={'fa fa-edit '}></i>
+                            </button>
+                            <button id="delete-btn">
+                                <i className={'fa fa-trash'}></i>
+                            </button>
                         </div>
                     </div>
                 </div>

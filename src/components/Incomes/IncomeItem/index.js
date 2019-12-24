@@ -9,6 +9,8 @@ class IncomeItem extends React.Component {
             showUpdate: false
         };
         this.handleChange = this.handleChange.bind(this);
+        console.log(props);
+        
     }
 
     handleChange = (e) => {
@@ -39,29 +41,22 @@ function ViewRow(props) {
             <div className={'income-item'}>
                 <div className={'income-item-header'}>
                     <h5>{new Date(props.parentProps.income.on_date).toDateString()}</h5>
-                    {/* <div>
-                        <img src={require('../../../assets/edit.svg')} onClick={() => { props.show(); }} />
-                        <img src={require('../../../assets/delete.svg')} onClick={() => { props.parentProps.delete(); }} />
-                    </div> */}
                 </div>
                 <div className={'income-item-body'}>
                     <span>{props.parentProps.income.description}</span>
                     <div id="right-side">
                         <b>{props.parentProps.income.amount}TL</b>
                         <div id="action-buttons-container">
-                            <button id="update-btn"></button>
-                            <button id="delete-btn"></button>
+                            <button id="update-btn">
+                                <i className={'fa fa-edit '}></i>
+                            </button>
+                            <button id="delete-btn" onClick={() => props.parentProps.delete(props.parentProps.income.objectId)}>
+                                <i className={'fa fa-trash'}></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            {/* <div>
-                <div className={ "btn-group btn-group-sm d-flex" }>
-                    <img height={ '24px' } src={ require('../../../assets/edit.svg') } onClick={ () => { props.show(); } } />
-                    <img height={ '24px' } src={ require('../../../assets/delete.svg') } onClick={ () => { props.parentProps.delete(); } } />
-                </div>
-            </div> */}
         </div>
     );
 }

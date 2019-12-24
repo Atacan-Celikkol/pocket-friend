@@ -1,12 +1,15 @@
 import React from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { getApiUrlById } from '../../config';
 import DateRange from '../../models/date-range';
 import IncomeItem from './IncomeItem';
 
 let totalIncomes = 0;
 const table = 'Incomes';
+const swal = withReactContent(Swal)
 
 class Incomes extends React.Component {
    constructor(props) {
@@ -19,17 +22,33 @@ class Incomes extends React.Component {
    }
 
    delete(id) {
-      if (window.confirm("Are you sure ?")) {
-         fetch(getApiUrlById(table, id), {
-            method: 'delete'
-         })
-            .then(res => res.json())
-            .then((data) => {
-               this.props.incomes = data;
-               this.getIncomes();
+
+      swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         icon: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+
+            fetch(getApiUrlById(table, id), {
+               method: 'delete'
             })
-            .catch(console.log);
-      }
+               .then(res => res.json())
+               .then((data) => {
+                  swal.fire(
+                     'Deleted!',
+                     'Your file has been deleted.',
+                     'success'
+                  )
+               });
+         }
+      })
+
+
    }
 
    update(obj) {
@@ -55,9 +74,9 @@ class Incomes extends React.Component {
             <div>
                {
                   this.props.incomes.length > 0 ?
-                  this.props.incomes.map((item, i) =>
-                     <IncomeItem key={i} index={i} income={item} delete={() => this.delete(item.objectId)} update={(income) => this.update(income)} />
-                  ) : '- You have no incomes. 😢'
+                     this.props.incomes.map((item, i) =>
+                        <IncomeItem key={i} index={i} income={item} delete={() => this.delete(item.objectId)} update={(income) => this.update(income)} />
+                     ) : '- You have no incomes. 😢'
                }
                {/* <IncomeCreate getIncomes={ this.getIncomes } /> */}
             </div>

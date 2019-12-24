@@ -8,10 +8,8 @@ function App() {
     <div id="main" className={'container'}>
       <Header />
 
-      <div className={'row'}>
-        <div className={'col-lg-6 offset-lg-3'}>
-          <Transactions />
-        </div>
+      <div className={'col-sm-12 col-lg-6 offset-lg-3'}>
+        <Transactions />
       </div>
 
     </div >
