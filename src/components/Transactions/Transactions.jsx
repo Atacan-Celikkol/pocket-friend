@@ -4,7 +4,7 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import DateRange from '../../models/date-range';
 import { getApiUrl, sortTypes } from '../../services/ApiService';
-import { GetIncomesAsync } from '../../services/IncomeService';
+import * as incomeService from '../../services/IncomeService';
 import Expenses from '../Expenses/index';
 import Incomes from '../Incomes/index';
 import Summary from './Summary/Summary';
@@ -15,13 +15,13 @@ let incomes = [];
 let expenses = [];
 let incomesTotal = 0;
 let expensesTotal = 0;
-
+// let incomeService = require('../../services/IncomeService').IncomeService;
 class Transactions extends React.Component {
     constructor(props) {
         super(props)
         this.state = new DateRange();
         this.getTransactions = this.getTransactions.bind(this);
-        GetIncomesAsync(this.state, 'on_date', sortTypes.Descending);
+        incomeService.getIncomesAsync(this.state, 'on_date', sortTypes.Descending);
     }
 
     componentDidMount() {
