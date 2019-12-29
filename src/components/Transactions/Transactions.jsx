@@ -24,23 +24,24 @@ class Transactions extends React.Component {
     constructor (props) {
         super(props);
         this.state = new DateRange();
-        this.getIncomes = this.getIncomes.bind(this);
-        this.getExpenses = this.getExpenses.bind(this);
+        this.getIncomesAsync = this.getIncomesAsync.bind(this);
+        this.getExpensesAsync = this.getExpensesAsync.bind(this);
         this.getTransactions = this.getTransactions.bind(this);
         this.deleteIncome = this.deleteIncome.bind(this);
         this.deleteExpense = this.deleteExpense.bind(this);
+        this.newIncome = this.newIncome.bind(this);
     }
 
     componentDidMount() {
-        this.getTransactions();
+        // this.getTransactions();
     }
 
     getTransactions() {
-        this.getIncomes().then(incomesLoading = false);
-        this.getExpenses().then(expensesLoading = false);
+        this.getIncomesAsync().then(incomesLoading = false);
+        this.getExpensesAsync().then(expensesLoading = false);
     }
 
-    async getIncomes() {
+    async getIncomesAsync() {
         incomesTotal = 0;
         incomeService.GetIncomesAsync(this.state, 'on_date', sortTypes.Descending).then(x => {
             incomes = x;
@@ -49,7 +50,7 @@ class Transactions extends React.Component {
         });
     }
 
-    async getExpenses() {
+    async getExpensesAsync() {
         expensesTotal = 0;
         expenseService.GetExpensesAsync(this.state, 'on_date', sortTypes.Descending).then(x => {
             expenses = x;
@@ -80,6 +81,23 @@ class Transactions extends React.Component {
                     alertService.ShowDeleteSuccess();
                 });
         });
+    }
+
+    newIncome() {
+        const queueItems = [
+            {
+                input: 'text', title: 'Amount', inputValidator: (value) => {
+                    if (!value || isNaN(value)) {
+                        return 'I said amount... 😢';
+                    }
+                }
+            },
+            { input: 'text', title: 'Description' }
+        ];
+        alertService.ShowQueue(['1', '2'], queueItems).then(result => {
+            incomeService.CreateIncomeAsync({ amount: Number(result.value[0]), description: result.value[1] });
+        });
+
     }
 
 
@@ -118,7 +136,7 @@ class Transactions extends React.Component {
                     <div className="d-flex">
                         <h3 className="text-success" >Incomes</h3>
                         <div className="d-flex ml-2">
-                            <button className="btn btn-sm btn-success m-auto">
+                            <button className="btn btn-sm btn-success m-auto" onClick={ this.newIncome }>
                                 <i className="icon-add" />
                             </button>
                         </div>

@@ -18,3 +18,12 @@ export function ShowDeleteSuccess() {
       'success'
    );
 }
+
+export function ShowQueue(progressSteps, queueItems) {
+   return swal.mixin({
+      input: 'text',
+      confirmButtonText: 'Next &rarr;',
+      showCancelButton: true,
+      progressSteps
+   }).queue(queueItems);
+}
