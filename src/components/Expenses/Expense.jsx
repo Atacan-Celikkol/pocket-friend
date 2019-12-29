@@ -2,10 +2,10 @@ import React from 'react';
 import { ContextMenu, ContextMenuTrigger, MenuItem } from "react-contextmenu";
 import "../../assets/react-contextmenu.scss";
 
-function Incomes(props) {
+function Expenses(props) {
    const table =
       <table className="table table-hover table-sm">
-         <thead className="bg-success text-light">
+         <thead className="bg-danger text-light">
             <tr>
                <th scope="col">#</th>
                <th scope="col">Date</th>
@@ -15,12 +15,12 @@ function Incomes(props) {
          </thead>
          <tbody>
             {
-               props.incomes.map((item, i) =>
-                  <ContextMenuTrigger renderTag={ 'tr' } id={ 'incomes-context' } key={ item.objectId } collect={ () => item }>
+               props.expenses.map((item, i) =>
+                  <ContextMenuTrigger renderTag={ 'tr' } id={ 'expenses-context' } key={ item.objectId } collect={ () => item }>
                      <th scope="row">{ i + 1 }</th>
                      <td>{ new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date)) }</td>
                      <td>{ item.description }</td>
-                     <td className="text-success font-weight-bold">{ item.amount }TL</td>
+                     <td className="text-danger font-weight-bold">{ item.amount }TL</td>
                   </ContextMenuTrigger>
                )
             }
@@ -28,7 +28,7 @@ function Incomes(props) {
       </table>;
 
    const context =
-      <ContextMenu id={ 'incomes-context' }>
+      <ContextMenu id={ 'expenses-context' }>
          <MenuItem onClick={ (e, data, f) => { console.log(e, data, f); } }><i className="icon-edit mr-1" /> Edit</MenuItem>
          <MenuItem divider />
          <MenuItem onClick={ props.delete }><i className="icon-delete mr-1" /> Delete</MenuItem>
@@ -42,4 +42,4 @@ function Incomes(props) {
    );
 }
 
-export default Incomes;
+export default Expenses;
