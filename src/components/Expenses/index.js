@@ -7,7 +7,7 @@ import ExpenseItem from './ExpenseItem';
 
 const table = 'Expenses';
 class Expenses extends React.Component {
-   constructor(props) {
+   constructor (props) {
       super(props);
 
       this.state = new DateRange();
@@ -46,18 +46,14 @@ class Expenses extends React.Component {
    render() {
       return (
          <div>
-            <div className={'d-flex'}>
-               <h3 className={"text-danger"}>Expenses</h3>
-            </div>
-
             <div>
                {
                   this.props.expenses.length > 0 ?
                      this.props.expenses.map((item, i) =>
-                        <ExpenseItem key={i} index={i} expense={item} delete={() => this.delete(item.objectId)} update={(expense) => this.update(expense)} />
+                        <ExpenseItem key={ i } index={ i } expense={ item } delete={ () => this.delete(item.objectId) } update={ (expense) => this.update(expense) } />
                      ) : '- You have no expenses! 😁'
                }
-               {/* <ExpenseCreate getExpenses={ this.getExpenses } /> */}
+               {/* <ExpenseCreate getExpenses={ this.getExpenses } /> */ }
             </div>
          </div>
       );
