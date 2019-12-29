@@ -3,6 +3,8 @@ import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import DateRange from '../../models/date-range';
+import Expense from '../../models/expense';
+import Income from '../../models/income';
 import * as alertService from '../../services/AlertService';
 import { sortTypes } from '../../services/ApiService';
 import * as expenseService from '../../services/ExpenseService';
@@ -30,10 +32,11 @@ class Transactions extends React.Component {
         this.deleteIncome = this.deleteIncome.bind(this);
         this.deleteExpense = this.deleteExpense.bind(this);
         this.newIncome = this.newIncome.bind(this);
+        this.newExpense = this.newExpense.bind(this);
     }
 
     componentDidMount() {
-        // this.getTransactions();
+        this.getTransactions();
     }
 
     getTransactions() {
@@ -84,6 +87,7 @@ class Transactions extends React.Component {
     }
 
     newIncome() {
+        const income = new Income();
         const queueItems = [
             {
                 input: 'text', title: 'Amount', inputValidator: (value) => {
@@ -92,10 +96,50 @@ class Transactions extends React.Component {
                     }
                 }
             },
+            {
+                title: 'Date',
+                html: <input type="date" className={ "form-control" } defaultValue={ income.on_date } onChange={ x => income.on_date = x.target.value } />
+            },
             { input: 'text', title: 'Description' }
         ];
-        alertService.ShowQueue(['1', '2'], queueItems).then(result => {
-            incomeService.CreateIncomeAsync({ amount: Number(result.value[0]), description: result.value[1] });
+        alertService.ShowQueue(['1', '2', '3'], queueItems).then(result => {
+            if (result.value) {
+                income.amount = Number(result.value[0]);
+                income.description = result.value[2];
+                incomeService.CreateIncomeAsync(income).then(x => {
+                    incomes.push(x);
+                    this.setState(this.state);
+                });
+            }
+        });
+
+    }
+
+    newExpense() {
+        const expense = new Expense();
+        const queueItems = [
+            {
+                input: 'text', title: 'Amount', inputValidator: (value) => {
+                    if (!value || isNaN(value)) {
+                        return 'I said amount... 😢';
+                    }
+                }
+            },
+            {
+                title: 'Date',
+                html: <input type="date" className={ "form-control" } defaultValue={ expense.on_date } onChange={ x => expense.on_date = x.target.value } />
+            },
+            { input: 'text', title: 'Description' }
+        ];
+        alertService.ShowQueue(['1', '2', '3'], queueItems).then(result => {
+            if (result.value) {
+                expense.amount = Number(result.value[0]);
+                expense.description = result.value[2];
+                expenseService.CreateExpenseAsync(expense).then(x => {
+                    expenses.push(x);
+                    this.setState(this.state);
+                });
+            }
         });
 
     }
@@ -146,7 +190,7 @@ class Transactions extends React.Component {
                     <div className="d-flex">
                         <h3 className="text-danger">Expenses</h3>
                         <div className="d-flex ml-2">
-                            <button className="btn btn-sm btn-danger m-auto">
+                            <button className="btn btn-sm btn-danger m-auto" onClick={ this.newExpense }>
                                 <i className="icon-add" />
                             </button>
                         </div>

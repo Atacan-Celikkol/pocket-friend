@@ -4,4 +4,4 @@ class Income {
    amount = 0;
 }
 
-export default Income
+export default Income;
