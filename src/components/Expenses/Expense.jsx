@@ -16,11 +16,11 @@ function Expenses(props) {
          <tbody>
             {
                props.expenses.map((item, i) =>
-                  <ContextMenuTrigger renderTag={ 'tr' } id={ 'expenses-context' } key={ item.objectId } collect={ () => item }>
-                     <th scope="row">{ i + 1 }</th>
-                     <td>{ new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date)) }</td>
-                     <td>{ item.description }</td>
-                     <td className="text-danger font-weight-bold">{ item.amount }TL</td>
+                  <ContextMenuTrigger renderTag={'tr'} id={'expenses-context'} key={item.objectId} collect={() => item}>
+                     <th scope="row">{i + 1}</th>
+                     <td>{new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date))}</td>
+                     <td>{item.description}</td>
+                     <td className="text-danger font-weight-bold">-{item.amount}TL</td>
                   </ContextMenuTrigger>
                )
             }
@@ -28,16 +28,16 @@ function Expenses(props) {
       </table>;
 
    const context =
-      <ContextMenu id={ 'expenses-context' }>
-         <MenuItem onClick={ (e, data, f) => { console.log(e, data, f); } }><i className="icon-edit mr-1" /> Edit</MenuItem>
+      <ContextMenu id={'expenses-context'}>
+         <MenuItem onClick={props.update}><i className="icon-edit mr-1" /> Edit</MenuItem>
          <MenuItem divider />
-         <MenuItem onClick={ props.delete }><i className="icon-delete mr-1" /> Delete</MenuItem>
+         <MenuItem onClick={props.delete}><i className="icon-delete mr-1" /> Delete</MenuItem>
       </ContextMenu>;
 
    return (
       <div>
-         { context }
-         { table }
+         {context}
+         {table}
       </div>
    );
 }
