@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from '../Header/index';
+import "../../assets/react-contextmenu.scss";
+import Header from '../Header/Header';
 import Transactions from '../Transactions/Transactions';
 import './style.scss';
 

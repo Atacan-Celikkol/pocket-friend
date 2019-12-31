@@ -9,9 +9,9 @@ import * as alertService from '../../services/AlertService';
 import { sortTypes } from '../../services/ApiService';
 import * as expenseService from '../../services/ExpenseService';
 import * as incomeService from '../../services/IncomeService';
-import Expenses from '../Expenses/Expense';
-import Incomes from '../Incomes/Incomes';
 import Loader from '../Loader/Loader';
+import Expenses from './Expenses/Expense';
+import Incomes from './Incomes/Incomes';
 import Summary from './Summary/Summary';
 import './Transactions.scss';
 
@@ -148,7 +148,7 @@ class Transactions extends React.Component {
                 expense.description = result.value[2];
                 expenseService.CreateExpenseAsync(expense).then(x => {
                     expenses.push(x);
-                    expenses += x.amount;
+                    expensesTotal += x.amount;
                     this.setState(this.state);
                 });
             }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { ContextMenu, ContextMenuTrigger, MenuItem } from "react-contextmenu";
-import "../../assets/react-contextmenu.scss";
 
 function Expenses(props) {
    const table =

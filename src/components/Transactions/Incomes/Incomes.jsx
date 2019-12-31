@@ -1,6 +1,5 @@
 import React from 'react';
 import { ContextMenu, ContextMenuTrigger, MenuItem } from "react-contextmenu";
-import "../../assets/react-contextmenu.scss";
 
 function Incomes(props) {
    console.log(props);
