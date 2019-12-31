@@ -3,6 +3,8 @@ import { ContextMenu, ContextMenuTrigger, MenuItem } from "react-contextmenu";
 import "../../assets/react-contextmenu.scss";
 
 function Incomes(props) {
+   console.log(props);
+
    const table =
       <table className="table table-sm">
          <thead className="bg-success text-light">
