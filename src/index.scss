@@ -13,7 +13,6 @@ html {
     -webkit-font-smoothing : antialiased;
     -moz-osx-font-smoothing: grayscale;
     background             : #171717;
-    height                 : 100%;
 
     #root {
       height: 100%;
@@ -51,4 +50,8 @@ code {
   .DateInput__small {
     width: 90px;
   }
+}
+
+.table {
+  color: inherit;
 }

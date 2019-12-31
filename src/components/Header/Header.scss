@@ -1,5 +1,16 @@
-.jumbotron {
-   .display-4 {
-      font-variant: petite-caps;
+.header-container {
+   text-align   : center;
+   display      : flex;
+   margin-bottom: 10px;
+
+   div {
+      margin: auto;
+
+      h1 {
+         font-variant: petite-caps;
+         margin      : 0;
+      }
+
+      span {}
    }
 }

@@ -4,10 +4,10 @@ import './Header.scss';
 class Header extends Component {
    render() {
       return (
-         <div className={'jumbotron'}>
-            <div className={'container'}>
-               <h1 className={'display-4'}>Pocket Friend</h1>
-               <p className={'lead'}>Your pocket's best friend! <span role="img" aria-label="smile">😊</span></p>
+         <div className="header-container">
+            <div className="">
+               <h1 className="">Pocket Friend</h1>
+               <span className="">Your pocket's best friend! {'😊'}</span>
             </div>
          </div>
       );
