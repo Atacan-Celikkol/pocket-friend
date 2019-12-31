@@ -4,7 +4,7 @@ import "../../assets/react-contextmenu.scss";
 
 function Incomes(props) {
    const table =
-      <table className="table table-hover table-sm">
+      <table className="table table-sm">
          <thead className="bg-success text-light">
             <tr>
                <th scope="col">#</th>

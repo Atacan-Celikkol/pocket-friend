@@ -3,8 +3,8 @@ import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import DateRange from '../../models/date-range';
-import Expense from '../../models/expense';
-import Income from '../../models/income';
+import Expense from '../../models/Expense';
+import Income from '../../models/Income';
 import * as alertService from '../../services/AlertService';
 import { sortTypes } from '../../services/ApiService';
 import * as expenseService from '../../services/ExpenseService';
@@ -23,7 +23,7 @@ let incomesLoading = true;
 let expensesLoading = true;
 
 class Transactions extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = new DateRange();
         this.getIncomesAsync = this.getIncomesAsync.bind(this);
@@ -100,7 +100,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
+                html: <input type="date" className={ "form-control" } defaultValue={ income.on_date } onChange={ x => income.on_date = x.target.value } />
             },
             { input: 'text', title: 'Description' }
         ];
@@ -129,7 +129,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
+                html: <input type="date" className={ "form-control" } defaultValue={ expense.on_date } onChange={ x => expense.on_date = x.target.value } />
             },
             { input: 'text', title: 'Description' }
         ];
@@ -158,7 +158,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
+                html: <input type="date" className={ "form-control" } defaultValue={ income.on_date } onChange={ x => income.on_date = x.target.value } />
             },
             { input: 'text', inputValue: income.description, title: 'Description' }
         ];
@@ -188,7 +188,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
+                html: <input type="date" className={ "form-control" } defaultValue={ expense.on_date } onChange={ x => expense.on_date = x.target.value } />
             },
             { input: 'text', inputValue: expense.description, title: 'Description' }
         ];
@@ -210,29 +210,29 @@ class Transactions extends React.Component {
     render() {
         return (
             <div>
-                <div className={'summary-container'}>
+                <div className={ 'summary-container' }>
                     <DateRangePicker
-                        startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                        startDate={ this.state.startDate } // momentPropTypes.momentObj or null,
                         startDateId="start-date-input" // PropTypes.string.isRequired,
-                        endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                        endDate={ this.state.endDate } // momentPropTypes.momentObj or null,
                         endDateId="end-date-input" // PropTypes.string.isRequired,
-                        onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                        isOutsideRange={() => false}
-                        renderCalendarInfo={() => false}
-                        small={false}
-                        withPortal={true}
-                        noBorder={true}
-                        block={true}
-                        readOnly={true}
-                        hideKeyboardShortcutsPanel={true}
-                        numberOfMonths={1}
-                        firstDayOfWeek={1}
-                        displayFormat={'DD.MM.YYYY'}
-                        onClose={() => setTimeout(() => this.getTransactions(), 100)}
+                        onDatesChange={ ({ startDate, endDate }) => this.setState({ startDate, endDate }) } // PropTypes.func.isRequired,
+                        focusedInput={ this.state.focusedInput } // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                        onFocusChange={ focusedInput => this.setState({ focusedInput }) } // PropTypes.func.isRequired,
+                        isOutsideRange={ () => false }
+                        renderCalendarInfo={ () => false }
+                        small={ false }
+                        withPortal={ true }
+                        noBorder={ true }
+                        block={ true }
+                        readOnly={ true }
+                        hideKeyboardShortcutsPanel={ true }
+                        numberOfMonths={ 1 }
+                        firstDayOfWeek={ 1 }
+                        displayFormat={ 'DD.MM.YYYY' }
+                        onClose={ () => setTimeout(() => this.getTransactions(), 100) }
                     />
-                    <Summary incomes={incomesTotal} expenses={expensesTotal} />
+                    <Summary incomes={ incomesTotal } expenses={ expensesTotal } />
                 </div>
 
                 <hr />
@@ -242,22 +242,22 @@ class Transactions extends React.Component {
                     <div className="d-flex">
                         <h3 className="text-success" >Incomes</h3>
                         <div className="d-flex ml-2">
-                            <button className="btn btn-sm btn-success m-auto" onClick={this.newIncome}>
+                            <button className="btn btn-sm btn-success m-auto" onClick={ this.newIncome }>
                                 <i className="icon-add" />
                             </button>
                         </div>
                     </div>
-                    {incomesLoading ? 'Loading...' : (incomes.length > 0 ? <Incomes incomes={incomes} delete={this.deleteIncome} update={this.updateIncome} /> : '- You have no incomes. 😢')}
+                    { incomesLoading ? 'Loading...' : (incomes.length > 0 ? <Incomes incomes={ incomes } delete={ this.deleteIncome } update={ this.updateIncome } /> : '- You have no incomes. 😢') }
                     <br />
                     <div className="d-flex">
                         <h3 className="text-danger">Expenses</h3>
                         <div className="d-flex ml-2">
-                            <button className="btn btn-sm btn-danger m-auto" onClick={this.newExpense}>
+                            <button className="btn btn-sm btn-danger m-auto" onClick={ this.newExpense }>
                                 <i className="icon-add" />
                             </button>
                         </div>
                     </div>
-                    {expensesLoading ? 'Loading...' : (expenses.length > 0 ? <Expenses expenses={expenses} delete={this.deleteExpense} update={this.updateExpense}/> : '- You have no expenses! 😁')}
+                    { expensesLoading ? 'Loading...' : (expenses.length > 0 ? <Expenses expenses={ expenses } delete={ this.deleteExpense } update={ this.updateExpense } /> : '- You have no expenses! 😁') }
                 </div>
             </div>
         );
