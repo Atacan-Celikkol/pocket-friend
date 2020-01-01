@@ -1,6 +1,67 @@
 #main {
-  background: white;
   overflow  : auto;
   height    : 100%;
   max-height: 100%;
+}
+
+.container {
+  background-color: $background-color;
+
+  @media (max-width: 576px) {
+    padding: 0;
+  }
+}
+
+
+
+.DateRangePickerInput {
+
+  background-color: #bbb;
+}
+
+.swal2-popup {
+  background: #0e0e0e;
+  border    : 1px solid;
+}
+
+.swal2-validation-message {
+  background: #121212;
+}
+
+.DateInput {
+  width           : calc(50% - 12px);
+  background-color: #bbb;
+
+  .DateRangePickerInput,
+  input,
+  p {
+
+    background-color: #bbb;
+  }
+
+  .DateInput_input {
+    text-align : center;
+    font-weight: bold;
+
+    &#start-date-input {
+      text-align: right;
+    }
+
+    &#end-date-input {
+      text-align: left;
+    }
+  }
+
+  .DateInput__small {
+    width: 90px;
+  }
+}
+
+.table {
+  color: inherit;
+
+  th,
+  td {
+    border-color: #272727;
+  }
 }

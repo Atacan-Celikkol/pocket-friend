@@ -12,7 +12,8 @@ html {
 
     -webkit-font-smoothing : antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background             : #171717;
+    background-color       : #000;
+    color                  : #eee;
 
     #root {
       height: 100%;
@@ -21,37 +22,5 @@ html {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-@media (max-width: 576px) {
-  .container {
-    padding: 0;
-  }
-}
-
-.DateInput {
-  width: calc(50% - 12px);
-
-  .DateInput_input {
-    text-align : center;
-    font-weight: bold;
-
-    &#start-date-input {
-      text-align: right;
-    }
-
-    &#end-date-input {
-      text-align: left;
-    }
-  }
-
-  .DateInput__small {
-    width: 90px;
-  }
-}
-
-.table {
-  color: inherit;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }

@@ -2,9 +2,16 @@ import React from 'react';
 import "../../assets/react-contextmenu.scss";
 import Header from '../Header/Header';
 import Transactions from '../Transactions/Transactions';
-import './style.scss';
 
+const themeColor = 'light';
 function App() {
+
+  if (themeColor === 'light') {
+    console.log('light');
+    require('./themes/light.scss');
+    require('./style.scss');
+  }
+
   return (
     <div id="main" className={'container'}>
       <Header />
