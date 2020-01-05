@@ -5,7 +5,8 @@
 }
 
 .container {
-  background-color: $background-color;
+  background-color: #fff;
+  color           : #222;
 
   @media (max-width: 576px) {
     padding: 0;
@@ -15,18 +16,18 @@
 
 
 .DateRangePickerInput {
-
   background-color: #bbb;
 }
 
 .swal2-popup {
-  background: #0e0e0e;
-  border    : 1px solid;
+  background: #fff;
+  box-shadow: 0 0 20px #bbb;
+
+  .swal2-validation-message {
+    background: #fee;
+  }
 }
 
-.swal2-validation-message {
-  background: #121212;
-}
 
 .DateInput {
   width           : calc(50% - 12px);

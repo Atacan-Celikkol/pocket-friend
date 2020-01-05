@@ -7,3 +7,4 @@
  - [ ] User based transactions - CRUD with token
  - [ ] Shared transactions - With specific users
  - [ ] Currency selection - EUR USD TRY 
+ - [ ] Themes (Light, Dark)
