@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as HashRouter, Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import "../../assets/react-contextmenu.scss";
 import Header from '../Header/Header';
 import Login from '../Login/Login';
@@ -20,28 +20,29 @@ const fakeAuth = {
 };
 export default function App() {
   return (
-    <div id="main" className={'container dark'}>
-      <Header />
+    <HashRouter basename='/'>
+      <div id="main" className={'container dark'}>
+        <Header />
 
-      <div className={'col-sm-12 col-lg-6 offset-lg-3'}>
+        <div className={'col-sm-12 col-lg-6 offset-lg-3'}>
 
 
-        <HashRouter>
-          <div>
-            <Switch>
-              <PrivateRoute path="/transactions">
-                <Transactions />
-              </PrivateRoute>
-              <Route path="*">
-                <Login />
-              </Route>
-            </Switch>
-          </div>
-        </HashRouter>
+          <Switch>
+            <PrivateRoute path="/transactions">
+              <Transactions />
+            </PrivateRoute>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="*">
+              <Redirect to='/transactions' />
+            </Route>
+          </Switch>
 
-      </div>
+        </div>
 
-    </div >
+      </div >
+    </HashRouter>
   );
 }
 

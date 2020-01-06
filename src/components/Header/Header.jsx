@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import './Header.scss';
 
 class Header extends Component {
@@ -11,7 +12,8 @@ class Header extends Component {
             </div>
             {
                localStorage.getItem('UserToken') &&
-               <a href="/login" style={{ position: 'absolute', marginTop: '22px' }} onClick={() => localStorage.removeItem('UserToken')}>Logout</a>
+               <Link to='/login' style={{ position: 'absolute', marginTop: '22px' }} onClick={() => localStorage.removeItem('UserToken')}>Logout</Link>
+               // <a href="/login" style={{ position: 'absolute', marginTop: '22px' }} onClick={() => localStorage.removeItem('UserToken')}>Logout</a>
             }
          </div>
       );

@@ -5,7 +5,6 @@ const api_key = '1FF6847A-E791-15A3-FFEE-DDFB60C31600';
 const api_app_key = 'F1C73522-DD64-3A93-FF4E-67CBDEDCDF00';
 export const api_url = `${api_base_url}${api_key}/${api_app_key}`;
 const api_data_url = `${api_url}/data/`;
-const userToken = localStorage.getItem('UserToken');
 
 export const sortTypes = {
    Ascending: ' asc',
@@ -25,11 +24,12 @@ export function getApiUrlById(tableName, id) {
 }
 
 export async function FetchAsync(url, method, obj) {
-   return fetch(url, { headers: { 'user-token': userToken }, method: method, body: JSON.stringify(obj) })
+   return fetch(url, { headers: { 'user-token': localStorage.getItem('UserToken') }, method: method, body: JSON.stringify(obj) })
       .then(res => {
          if (res.status === 400 || res.status === 401) {
-            window.location.assign('/login');
+            localStorage.removeItem('UserToken');
+            window.location.reload();
          }
-         return res.json()
+         return res.json();
       });
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import UserLogin from '../../models/UserLogin';
 import UserRegister from '../../models/UserRegister';
 import { LoginAsync, RegisterAsync } from '../../services/UserService';
@@ -29,6 +30,7 @@ export default class Login extends React.Component {
 
 export function LoginComponent(props) {
    const user = new UserLogin();
+   const history = useHistory();
    const login = (e) => {
       e.preventDefault();
       LoginAsync(user).then(x => {
@@ -36,8 +38,9 @@ export function LoginComponent(props) {
             alert(x.message);
             return;
          } else {
-            localStorage.setItem('UserToken', x['user-token']); window.location.assign('transactions');
-         }
+            localStorage.setItem('UserToken', x['user-token']);
+            history.push('/transactions');
+         };
       });
    };
 
@@ -58,8 +61,8 @@ export function LoginComponent(props) {
 }
 
 export function RegisterComponent() {
-
    const user = new UserRegister();
+   const history = useHistory();
    const register = (e) => {
       e.preventDefault();
       RegisterAsync(user)
@@ -68,7 +71,7 @@ export function RegisterComponent() {
                alert(x.message);
                return;
             } else {
-               LoginAsync({ login: user.email, password: user.password }).then(x => { localStorage.setItem('UserToken', x['user-token']); window.location.assign('transactions'); });
+               LoginAsync({ login: user.email, password: user.password }).then(x => { localStorage.setItem('UserToken', x['user-token']); history.push('/transactions'); });
             }
          });
    };
