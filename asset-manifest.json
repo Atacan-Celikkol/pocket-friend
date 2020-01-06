@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/pocket-friend/static/css/main.bbd24e99.chunk.css",
-    "main.js": "/pocket-friend/static/js/main.b2cf6dc4.chunk.js",
-    "main.js.map": "/pocket-friend/static/js/main.b2cf6dc4.chunk.js.map",
+    "main.js": "/pocket-friend/static/js/main.d77d52c3.chunk.js",
+    "main.js.map": "/pocket-friend/static/js/main.d77d52c3.chunk.js.map",
     "runtime-main.js": "/pocket-friend/static/js/runtime-main.e85a0167.js",
     "runtime-main.js.map": "/pocket-friend/static/js/runtime-main.e85a0167.js.map",
     "static/css/2.30861e7f.chunk.css": "/pocket-friend/static/css/2.30861e7f.chunk.css",
-    "static/js/2.657b6bb7.chunk.js": "/pocket-friend/static/js/2.657b6bb7.chunk.js",
-    "static/js/2.657b6bb7.chunk.js.map": "/pocket-friend/static/js/2.657b6bb7.chunk.js.map",
+    "static/js/2.b6d6cfab.chunk.js": "/pocket-friend/static/js/2.b6d6cfab.chunk.js",
+    "static/js/2.b6d6cfab.chunk.js.map": "/pocket-friend/static/js/2.b6d6cfab.chunk.js.map",
     "index.html": "/pocket-friend/index.html",
-    "precache-manifest.6f9b34f0da912d46e7f1a0c148b43ac6.js": "/pocket-friend/precache-manifest.6f9b34f0da912d46e7f1a0c148b43ac6.js",
+    "precache-manifest.958bcf152ceee9b697ffa1281eef5011.js": "/pocket-friend/precache-manifest.958bcf152ceee9b697ffa1281eef5011.js",
     "service-worker.js": "/pocket-friend/service-worker.js",
     "static/css/2.30861e7f.chunk.css.map": "/pocket-friend/static/css/2.30861e7f.chunk.css.map",
     "static/css/main.bbd24e99.chunk.css.map": "/pocket-friend/static/css/main.bbd24e99.chunk.css.map",
@@ -18,8 +18,8 @@
   "entrypoints": [
     "static/js/runtime-main.e85a0167.js",
     "static/css/2.30861e7f.chunk.css",
-    "static/js/2.657b6bb7.chunk.js",
+    "static/js/2.b6d6cfab.chunk.js",
     "static/css/main.bbd24e99.chunk.css",
-    "static/js/main.b2cf6dc4.chunk.js"
+    "static/js/main.d77d52c3.chunk.js"
   ]
 }
