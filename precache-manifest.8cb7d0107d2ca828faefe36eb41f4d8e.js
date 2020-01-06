@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b9a6e5ed8fbece434630061f08e95b54",
+    "revision": "ead7a47756a39bd527a1d4fb6e476460",
     "url": "/pocket-friend/index.html"
   },
   {
-    "revision": "c439e628ec302d6fe4ec",
+    "revision": "d4d9ba99973c307edc08",
     "url": "/pocket-friend/static/css/2.30861e7f.chunk.css"
   },
   {
-    "revision": "43184fe6f5ca58a5ce90",
-    "url": "/pocket-friend/static/css/main.65f6e73f.chunk.css"
+    "revision": "ef0895755476bb08daf0",
+    "url": "/pocket-friend/static/css/main.5eca765d.chunk.css"
   },
   {
-    "revision": "c439e628ec302d6fe4ec",
-    "url": "/pocket-friend/static/js/2.5f6d6e80.chunk.js"
+    "revision": "d4d9ba99973c307edc08",
+    "url": "/pocket-friend/static/js/2.05d6ca55.chunk.js"
   },
   {
-    "revision": "43184fe6f5ca58a5ce90",
-    "url": "/pocket-friend/static/js/main.4dd2326a.chunk.js"
+    "revision": "ef0895755476bb08daf0",
+    "url": "/pocket-friend/static/js/main.3f59461d.chunk.js"
   },
   {
     "revision": "497d3e368b835f9091da",
@@ -28,8 +28,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pocket-friend/static/media/icomoon.1d8765d4.ttf"
   },
   {
-    "revision": "93af8677007a22bcd609b664281c8c98",
-    "url": "/pocket-friend/static/media/icomoon.93af8677.svg"
+    "revision": "a25a12b9755b605d109c61884a4a0b47",
+    "url": "/pocket-friend/static/media/icomoon.a25a12b9.svg"
   },
   {
     "revision": "c493353a1cc6849e3dd92f4829792403",
