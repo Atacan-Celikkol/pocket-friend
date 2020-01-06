@@ -1,7 +1,8 @@
-
-
-@mixin themable($theme-name, $container-bg, $left-bg, $right-bg, $innertext, $button-bg) {
+@mixin themable($theme-name, $container-bg, $color) {
   .#{$theme-name} {
+    background-color: $container-bg;
+    color           : $color;
+
     &.container {
       background-color: $container-bg !important;
 
@@ -9,22 +10,21 @@
         padding: 0;
       }
     }
+
+    .card {
+      background-color: lighten($color:$container-bg, $amount: 4);
+    }
   }
 }
 
-@include themable(theme-1, #f7eb80, #497265, #82aa91, #fff, #bc6a49);
-@include themable(theme-2, #e4ada7, #d88880, #cc6359, #fff, #481b16);
+@include themable(dark, #111, #eee);
+@include themable(light, #fff, #222);
 
 #main {
   overflow  : auto;
   height    : 100%;
   max-height: 100%;
 }
-
-.container {
-  background-color: #fff;
-  color           : #222;
-
 
 
 
@@ -72,7 +72,7 @@
 }
 
 .table {
-  color: inherit;
+  color: inherit !important;
 
   th,
   td {
