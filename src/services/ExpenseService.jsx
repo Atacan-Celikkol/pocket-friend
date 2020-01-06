@@ -1,34 +1,24 @@
 import DateRange from '../models/date-range';
-import { getApiUrl, getApiUrlById, getApiUrlSimple, sortTypes } from './ApiService';
+import { FetchAsync, getApiUrl, getApiUrlById, getApiUrlSimple, sortTypes } from './ApiService';
 
 const tableName = 'Expenses';
-const userToken = localStorage.getItem('UserToken');
-
 export async function GetExpensesAsync(dateRange = new DateRange(), sortBy, sortType = sortTypes.Ascending) {
-   const url = getApiUrl(tableName, dateRange, sortBy, sortType);
-   return fetch(url, { headers: { 'user-token': userToken } }).then(res => res.json());
+    const url = getApiUrl(tableName, dateRange, sortBy, sortType);
+    return await FetchAsync(url, 'get');
 }
 
 export async function DeleteExpenseAsync(id) {
-   const url = getApiUrlById(tableName, id);
-   return fetch(url, { headers: { 'user-token': userToken }, method: 'delete' }).then(res => res.json());
+    const url = getApiUrlById(tableName, id);
+    return FetchAsync(url, 'delete');
 }
 
 
 export async function UpdateExpenseAsync(obj, id) {
-   const url = getApiUrlById(tableName, id);
-   return fetch(url, {
-      headers: { 'user-token': userToken },
-      method: 'put',
-      body: JSON.stringify(obj)
-   }).then(res => res.json());
+    const url = getApiUrlById(tableName, id);
+    return FetchAsync(url, 'put', obj);
 }
 
 export async function CreateExpenseAsync(obj) {
-   const url = getApiUrlSimple(tableName);
-   return fetch(url, {
-      headers: { 'user-token': userToken },
-      method: 'post',
-      body: JSON.stringify(obj)
-   }).then(res => res.json());
+    const url = getApiUrlSimple(tableName);
+    return FetchAsync(url, 'post', obj);
 }

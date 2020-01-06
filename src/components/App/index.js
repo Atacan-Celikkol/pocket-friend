@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
+import { BrowserRouter as HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import "../../assets/react-contextmenu.scss";
 import Header from '../Header/Header';
 import Login from '../Login/Login';
@@ -26,9 +26,8 @@ export default function App() {
       <div className={'col-sm-12 col-lg-6 offset-lg-3'}>
 
 
-        <Router>
+        <HashRouter>
           <div>
-
             <Switch>
               <PrivateRoute path="/transactions">
                 <Transactions />
@@ -38,7 +37,7 @@ export default function App() {
               </Route>
             </Switch>
           </div>
-        </Router>
+        </HashRouter>
 
       </div>
 
