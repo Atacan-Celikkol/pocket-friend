@@ -4,7 +4,7 @@ import { ContextMenu, ContextMenuTrigger, MenuItem } from "react-contextmenu";
 function Incomes(props) {
    const table =
       <table className="table table-sm">
-         <thead className="bg-success text-light">
+         <thead className="bg-green text-light">
             <tr>
                <th scope="col">#</th>
                <th scope="col">Date</th>
@@ -19,7 +19,7 @@ function Incomes(props) {
                      <th scope="row">{i + 1}</th>
                      <td className={item.on_date > new Date().getTime() && 'incoming-income-date'}>{new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date))}</td>
                      <td>{item.description}</td>
-                     <td className="text-success font-weight-bold">{item.amount}TL</td>
+                     <td className="green">{item.amount}TL</td>
                   </ContextMenuTrigger>
                )
             }

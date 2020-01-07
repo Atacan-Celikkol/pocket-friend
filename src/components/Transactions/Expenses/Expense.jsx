@@ -4,7 +4,7 @@ import { ContextMenu, ContextMenuTrigger, MenuItem } from "react-contextmenu";
 function Expenses(props) {
    const table =
       <table className="table table-sm">
-         <thead className="bg-danger text-light">
+         <thead className="bg-red">
             <tr>
                <th scope="col">#</th>
                <th scope="col">Date</th>
@@ -19,7 +19,7 @@ function Expenses(props) {
                      <th scope="row">{i + 1}</th>
                      <td className={item.on_date > new Date().getTime() && 'incoming-expense-date'}>{new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date))}</td>
                      <td>{item.description}</td>
-                     <td className="text-danger font-weight-bold">-{item.amount}TL</td>
+                     <td className="red">-{item.amount}TL</td>
                   </ContextMenuTrigger>
                )
             }

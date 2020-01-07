@@ -22,9 +22,9 @@ export default function App() {
   return (
     <HashRouter basename='/'>
       <div id="main" className={'container dark'}>
-        <Header />
+        <div className={'col-sm-12 col-lg-6 offset-lg-3 column column-offset-75'}>
+          <Header />
 
-        <div className={'col-sm-12 col-lg-6 offset-lg-3'}>
 
 
           <Switch>

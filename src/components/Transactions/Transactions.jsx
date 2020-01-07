@@ -109,7 +109,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
             },
             { input: 'text', title: 'Description' }
         ];
@@ -138,7 +138,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
             },
             { input: 'text', title: 'Description' }
         ];
@@ -167,7 +167,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
             },
             { input: 'text', inputValue: income.description, title: 'Description' }
         ];
@@ -197,7 +197,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
             },
             { input: 'text', inputValue: expense.description, title: 'Description' }
         ];
@@ -248,23 +248,19 @@ class Transactions extends React.Component {
 
                 <div>
 
-                    <div className="d-flex">
-                        <h3 className="text-success" >Incomes</h3>
-                        <div className="d-flex ml-2">
-                            <button className="btn btn-sm btn-success m-auto" onClick={this.newIncome}>
-                                <i className="icon-add" />
-                            </button>
-                        </div>
+                    <div className="table-header">
+                        <h2 className="green" >Incomes</h2>
+                        <button className="" onClick={this.newIncome}>
+                            Test
+                        </button>
                     </div>
                     {incomesLoading ? <Loader color="#5B5" /> : (incomes.length > 0 ? <Incomes incomes={incomes} delete={this.deleteIncome} update={this.updateIncome} /> : '- You have no incomes. 😢')}
                     <br />
-                    <div className="d-flex">
-                        <h3 className="text-danger">Expenses</h3>
-                        <div className="d-flex ml-2">
-                            <button className="btn btn-sm btn-danger m-auto" onClick={this.newExpense}>
-                                <i className="icon-add" />
-                            </button>
-                        </div>
+                    <div className="table-header">
+                        <h2 className="red" >Expenses</h2>
+                        <button className="" onClick={this.newExpense}>
+                            <i className="icon-add" />
+                        </button>
                     </div>
                     {expensesLoading ? <Loader color="#F55" /> : (expenses.length > 0 ? <Expenses expenses={expenses} delete={this.deleteExpense} update={this.updateExpense} /> : '- You have no expenses! 😁')}
                 </div>

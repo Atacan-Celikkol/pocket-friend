@@ -12,3 +12,12 @@
 .incoming-expense-date {
     color: #f33;
 }
+
+.table-header {
+    display: flex;
+    padding: 10px 0;
+
+    button {
+        margin-left: 5px;
+    }
+}
