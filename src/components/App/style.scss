@@ -1,9 +1,9 @@
 @mixin themable($theme-name, $container-bg, $color) {
   .#{$theme-name} {
-    background-color: $container-bg;
+    background-color: #000;
     color           : $color;
 
-    &.container {
+    .container {
       background-color: $container-bg !important;
 
       @media (max-width: 576px) {
@@ -13,6 +13,29 @@
 
     .card {
       background-color: lighten($color:$container-bg, $amount: 4);
+    }
+
+    .table {
+      color: inherit !important;
+
+      th,
+      td {
+        border-color: #272727;
+      }
+    }
+
+    .form-control,
+    .form-control:focus {
+      background-color: $container-bg;
+    }
+
+    .swal2-popup {
+      background: $container-bg;
+      box-shadow: 0 0 20px darken($color: $container-bg, $amount: 10);
+
+      .swal2-validation-message {
+        background: #fee;
+      }
     }
   }
 }
@@ -32,50 +55,38 @@
   background-color: #bbb;
 }
 
-.swal2-popup {
-  background: #fff;
-  box-shadow: 0 0 20px #bbb;
-
-  .swal2-validation-message {
-    background: #fee;
-  }
-}
 
 
-.DateInput {
-  width           : calc(50% - 12px);
-  background-color: #bbb;
+.DateRangePickerInput {
 
-  .DateRangePickerInput,
+  &,
   input,
   p {
-
-    background-color: #bbb;
+    background-color: #111;
+    color           : #eee;
   }
 
-  .DateInput_input {
-    text-align : center;
-    font-weight: bold;
+  .DateInput {
+    width: calc(50% - 12px);
 
-    &#start-date-input {
-      text-align: right;
+
+
+    .DateInput_input {
+      text-align : center;
+      font-weight: bold;
+
+      &#start-date-input {
+        text-align: right;
+      }
+
+      &#end-date-input {
+        text-align: left;
+      }
     }
 
-    &#end-date-input {
-      text-align: left;
+    .DateInput__small {
+      width: 90px;
     }
   }
 
-  .DateInput__small {
-    width: 90px;
-  }
-}
-
-.table {
-  color: inherit !important;
-
-  th,
-  td {
-    border-color: #272727;
-  }
 }
