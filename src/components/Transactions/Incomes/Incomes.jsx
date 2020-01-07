@@ -2,8 +2,6 @@ import React from 'react';
 import { ContextMenu, ContextMenuTrigger, MenuItem } from "react-contextmenu";
 
 function Incomes(props) {
-   console.log(props);
-
    const table =
       <table className="table table-sm">
          <thead className="bg-success text-light">
@@ -19,7 +17,7 @@ function Incomes(props) {
                props.incomes.map((item, i) =>
                   <ContextMenuTrigger renderTag={'tr'} id={'incomes-context'} key={item.objectId} collect={() => item}>
                      <th scope="row">{i + 1}</th>
-                     <td>{new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date))}</td>
+                     <td className={item.on_date > new Date().getTime() && 'incoming-income-date'}>{new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date))}</td>
                      <td>{item.description}</td>
                      <td className="text-success font-weight-bold">{item.amount}TL</td>
                   </ContextMenuTrigger>
