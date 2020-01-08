@@ -10,7 +10,7 @@ import { sortTypes } from '../../services/ApiService';
 import * as expenseService from '../../services/ExpenseService';
 import * as incomeService from '../../services/IncomeService';
 import Loader from '../Loader/Loader';
-import Expenses from './Expenses/Expense';
+import Expenses from './Expenses/Expenses';
 import Incomes from './Incomes/Incomes';
 import Summary from './Summary/Summary';
 import './Transactions.scss';
@@ -46,6 +46,8 @@ class Transactions extends React.Component {
         this.getIncomesAsync();
         this.getExpensesAsync();
     }
+
+    orderByDate(a, b) { return b.on_date - a.on_date }
 
     async getIncomesAsync() {
         incomes = [];
@@ -119,6 +121,7 @@ class Transactions extends React.Component {
                 income.description = result.value[2];
                 incomeService.CreateIncomeAsync(income).then(x => {
                     incomes.push(x);
+                    incomes.sort(this.orderByDate);
                     incomesTotal += x.amount;
                     this.setState(this.state);
                 });
@@ -148,6 +151,7 @@ class Transactions extends React.Component {
                 expense.description = result.value[2];
                 expenseService.CreateExpenseAsync(expense).then(x => {
                     expenses.push(x);
+                    expenses.sort(this.orderByDate);
                     expensesTotal += x.amount;
                     this.setState(this.state);
                 });
@@ -178,6 +182,7 @@ class Transactions extends React.Component {
 
                 incomeService.UpdateIncomeAsync(income, item.objectId).then(x => {
                     incomes.splice(incomes.findIndex(x => x.objectId === item.objectId), 1, x);
+                    incomes.sort(this.orderByDate);
                     incomesTotal += (x.amount - item.amount);
                     this.setState(this.state);
                 });
@@ -208,6 +213,7 @@ class Transactions extends React.Component {
 
                 expenseService.UpdateExpenseAsync(expense, item.objectId).then(x => {
                     expenses.splice(expenses.findIndex(x => x.objectId === item.objectId), 1, x);
+                    expenses.sort(this.orderByDate);
                     expensesTotal += (x.amount - item.amount);
                     this.setState(this.state);
                 });
@@ -256,7 +262,7 @@ class Transactions extends React.Component {
                             </button>
                         </div>
                     </div>
-                    {incomesLoading ? <Loader color="#5B5" /> : (incomes.length > 0 ? <Incomes incomes={incomes} delete={this.deleteIncome} update={this.updateIncome} /> : '- You have no incomes. 😢')}
+                    {incomesLoading ? <Loader color="#3A3" /> : (incomes.length > 0 ? <Incomes incomes={incomes} delete={this.deleteIncome} update={this.updateIncome} /> : '- You have no incomes. 😢')}
                     <br />
                     <div className="d-flex">
                         <h3 className="text-danger">Expenses</h3>
@@ -266,7 +272,7 @@ class Transactions extends React.Component {
                             </button>
                         </div>
                     </div>
-                    {expensesLoading ? <Loader color="#F55" /> : (expenses.length > 0 ? <Expenses expenses={expenses} delete={this.deleteExpense} update={this.updateExpense} /> : '- You have no expenses! 😁')}
+                    {expensesLoading ? <Loader color="#f33" /> : (expenses.length > 0 ? <Expenses expenses={expenses} delete={this.deleteExpense} update={this.updateExpense} /> : '- You have no expenses! 😁')}
                 </div>
             </div>
         );

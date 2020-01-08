@@ -1,10 +1,9 @@
 import React from 'react';
 import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
-import "../../assets/react-contextmenu.scss";
 import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Transactions from '../Transactions/Transactions';
-import './style.scss';
+import './App.scss';
 
 
 const fakeAuth = {

@@ -1,9 +1,9 @@
 .react-contextmenu {
-   background-color: #fff;
+   background-color: $dark;
    background-clip : padding-box;
    border          : 1px solid rgba(0, 0, 0, 0.15);
    border-radius   : 0.25rem;
-   color           : #373a3c;
+   color           : $white;
    font-size       : 16px;
    margin          : 2px 0 0;
    min-width       : 160px;
@@ -24,7 +24,7 @@
 .react-contextmenu-item {
    background : 0 0;
    border     : 0;
-   color      : #373a3c;
+   color      : inherit;
    cursor     : pointer;
    font-weight: 400;
    line-height: 1.5;
@@ -36,8 +36,8 @@
 .react-contextmenu-item.react-contextmenu-item--active,
 .react-contextmenu-item.react-contextmenu-item--selected {
    color           : #fff;
-   background-color: #20a0ff;
-   border-color    : #20a0ff;
+   background-color: $primary;
+   border-color    : $primary;
    text-decoration : none;
 }
 
@@ -62,18 +62,4 @@
 
 .react-contextmenu-item.react-contextmenu-submenu {
    padding: 0;
-}
-
-.react-contextmenu-item.react-contextmenu-submenu>.react-contextmenu-item {}
-
-.react-contextmenu-item.react-contextmenu-submenu>.react-contextmenu-item:after {
-   content : '▶';
-   display : inline-block;
-   position: absolute;
-   right   : 7px;
-}
-
-.example-multiple-targets::after {
-   content: attr(data-count);
-   display: block;
 }

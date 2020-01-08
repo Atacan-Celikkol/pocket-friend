@@ -17,7 +17,7 @@ function Expenses(props) {
                props.expenses.map((item, i) =>
                   <ContextMenuTrigger renderTag={'tr'} id={'expenses-context'} key={item.objectId} collect={() => item}>
                      <th scope="row">{i + 1}</th>
-                     <td className={item.on_date > new Date().getTime() && 'incoming-expense-date'}>{new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date))}</td>
+                     <td className={item.on_date > new Date().getTime() ? 'incoming-expense-date' : undefined}>{new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date))}</td>
                      <td>{item.description}</td>
                      <td className="text-danger font-weight-bold">-{item.amount}TL</td>
                   </ContextMenuTrigger>

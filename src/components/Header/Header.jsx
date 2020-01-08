@@ -7,7 +7,7 @@ class Header extends Component {
       return (
          <div className="header-container col-sm-12 col-lg-6 offset-lg-3">
             <div className="">
-               <h1 className="">Pocket Friend</h1>
+               <h1 className="text-success">Pocket Friend</h1>
                <span className="">Your pocket's best friend! {'😊'}</span>
             </div>
             {

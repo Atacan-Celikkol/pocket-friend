@@ -17,7 +17,7 @@ function Incomes(props) {
                props.incomes.map((item, i) =>
                   <ContextMenuTrigger renderTag={'tr'} id={'incomes-context'} key={item.objectId} collect={() => item}>
                      <th scope="row">{i + 1}</th>
-                     <td className={item.on_date > new Date().getTime() && 'incoming-income-date'}>{new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date))}</td>
+                     <td className={item.on_date > new Date().getTime() ? 'incoming-income-date' : undefined}>{new Intl.DateTimeFormat('tr-TR').format(new Date(item.on_date))}</td>
                      <td>{item.description}</td>
                      <td className="text-success font-weight-bold">{item.amount}TL</td>
                   </ContextMenuTrigger>
