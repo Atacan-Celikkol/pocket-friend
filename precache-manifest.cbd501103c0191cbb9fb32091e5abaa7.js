@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "34d7fc6060a44fbeca3d8f42065257a4",
+    "revision": "52f43b20a54a0365ec4f8301c23a3bfd",
     "url": "/pocket-friend/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pocket-friend/static/css/2.30861e7f.chunk.css"
   },
   {
-    "revision": "2b7e5224a11ca1626417",
-    "url": "/pocket-friend/static/css/main.2cd70ae7.chunk.css"
+    "revision": "afc679ecab4196a51f7a",
+    "url": "/pocket-friend/static/css/main.a851a918.chunk.css"
   },
   {
     "revision": "0982fd37374fc0fb21fb",
     "url": "/pocket-friend/static/js/2.67fcb4a4.chunk.js"
   },
   {
-    "revision": "2b7e5224a11ca1626417",
-    "url": "/pocket-friend/static/js/main.7a00af5c.chunk.js"
+    "revision": "afc679ecab4196a51f7a",
+    "url": "/pocket-friend/static/js/main.61a2493a.chunk.js"
   },
   {
     "revision": "497d3e368b835f9091da",

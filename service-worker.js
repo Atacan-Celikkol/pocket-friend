@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/pocket-friend/precache-manifest.bd9145dfa24d8e67cfa74361bf7d68ff.js"
+  "/pocket-friend/precache-manifest.cbd501103c0191cbb9fb32091e5abaa7.js"
 );
 
 self.addEventListener('message', (event) => {
