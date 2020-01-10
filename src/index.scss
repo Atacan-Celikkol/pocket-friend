@@ -20,4 +20,21 @@ html {
       height: 100%;
     }
   }
+
+  .btn,
+  .form-control {
+    transition: 250ms;
+  }
+
+  .form-control:hover,
+  .form-control:active,
+  .form-control:focus {
+    transform: scale(1.02);
+  }
+
+  .btn:hover,
+  .btn:active,
+  .btn:focus {
+    transform: scale(1.1);
+  }
 }

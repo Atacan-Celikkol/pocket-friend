@@ -7,22 +7,34 @@ export function ShowDeleteConfirmation() {
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
       icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes!'
+      animation: false,
+      confirmButtonText: 'Delete!',
+      confirmButtonColor: '#F33',
+      toast: true,
+      width: 350,
+      showCloseButton: true,
    });
 }
 export function ShowDeleteSuccess() {
-   return swal.fire(
-      'Deleted!',
-      'Item has been deleted.',
-      'success'
-   );
+   return swal.fire({
+      title: 'Deleted!',
+      text: 'Item has been deleted!',
+      icon: 'success',
+      position: "bottom",
+      showConfirmButton: false,
+      toast: true,
+      timer: 2500,
+      width: 350
+   });
 }
 
 export function ShowQueue(progressSteps, queueItems) {
    return swal.mixin({
-      confirmButtonText: 'Next &rarr;',
+      animation: false,
+      confirmButtonText: 'Next',
+      confirmButtonColor: '#07f',
       showCancelButton: true,
+      cancelButtonColor: '#F33',
       progressSteps
    }).queue(queueItems);
 }

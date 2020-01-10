@@ -111,7 +111,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
             },
             { input: 'text', title: 'Description' }
         ];
@@ -141,7 +141,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
             },
             { input: 'text', title: 'Description' }
         ];
@@ -171,7 +171,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
             },
             { input: 'text', inputValue: income.description, title: 'Description' }
         ];
@@ -202,7 +202,7 @@ class Transactions extends React.Component {
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"form-control"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
             },
             { input: 'text', inputValue: expense.description, title: 'Description' }
         ];
@@ -244,6 +244,7 @@ class Transactions extends React.Component {
                         hideKeyboardShortcutsPanel={true}
                         numberOfMonths={1}
                         firstDayOfWeek={1}
+                        transitionDuration={0}
                         displayFormat={'DD.MM.YYYY'}
                         onClose={() => setTimeout(() => this.getTransactions(), 100)}
                     />

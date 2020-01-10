@@ -1,6 +1,7 @@
+@import '../../colors.scss';
 @mixin themable($theme-name, $container-bg, $color) {
   .#{$theme-name} {
-    background-color: #000;
+    background-color: #000e;
     color           : $color;
 
     .container {
@@ -12,81 +13,91 @@
     }
 
     .card {
-      background-color: lighten($color:$container-bg, $amount: 4);
+      background-color: lighten($color:$container-bg, $amount: 5);
+      border-color    : transparentize($color: $color, $amount: 0.95);
     }
 
     .table {
-      color: inherit !important;
+      color: inherit;
 
       th,
       td {
-        border-color: #272727;
+        border-color: transparentize($color: $color, $amount: 0.85);
       }
     }
 
     .form-control,
-    .form-control:focus {
+    .form-control:active,
+    .form-control:focus,
+    .swal2-input {
       background-color: $container-bg;
+      color           : $color;
     }
+
 
     .swal2-popup {
       background: $container-bg;
-      box-shadow: 0 0 20px darken($color: $container-bg, $amount: 10);
+      box-shadow: 0 0 20px transparentize($color: $color, $amount: 0.8);
+      border    : 1px solid transparentize($color: $color, $amount: 0.8);
+
+      .swal2-title {
+        color: $color;
+      }
 
       .swal2-validation-message {
-        background: #fee;
+        background: #F113;
+        color     : white;
       }
+
+      .swal2-progress-steps {
+        .swal2-progress-step {
+          background-color: lighten($color: $primary, $amount: 30);
+        }
+        .swal2-active-progress-step {
+          background-color: $primary;
+        }
+      }
+    }
+
+    .DateRangePickerInput {
+
+      &,
+      input,
+      p {
+        background-color: $container-bg;
+        color           : $color;
+      }
+
+      .DateInput {
+        width: calc(50% - 12px);
+
+        .DateInput_input {
+          text-align : center;
+          font-weight: bold;
+
+          &#start-date-input {
+            text-align: right;
+          }
+
+          &#end-date-input {
+            text-align: left;
+          }
+        }
+
+        .DateInput__small {
+          width: 90px;
+        }
+      }
+
     }
   }
 }
 
-@include themable(dark, #111, #eee);
+@include themable(dark, #000, #EEE);
 @include themable(light, #fff, #222);
 
 #main {
   overflow  : auto;
   height    : 100%;
   max-height: 100%;
-}
-
-
-
-.DateRangePickerInput {
-  background-color: #bbb;
-}
-
-
-
-.DateRangePickerInput {
-
-  &,
-  input,
-  p {
-    background-color: #111;
-    color           : #eee;
-  }
-
-  .DateInput {
-    width: calc(50% - 12px);
-
-
-
-    .DateInput_input {
-      text-align : center;
-      font-weight: bold;
-
-      &#start-date-input {
-        text-align: right;
-      }
-
-      &#end-date-input {
-        text-align: left;
-      }
-    }
-
-    .DateInput__small {
-      width: 90px;
-    }
-  }
-
 }
