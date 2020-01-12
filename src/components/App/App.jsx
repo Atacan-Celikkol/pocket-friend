@@ -20,10 +20,10 @@ const fakeAuth = {
 export default function App() {
   return (
     <HashRouter basename='/'>
-      <div id="main" className={'container dark'}>
+      <div id="main" className='container dark'>
         <Header />
 
-        <div className={'col-sm-12 col-lg-6 offset-lg-3'}>
+        <div className='col-sm-12 col-lg-8 offset-lg-2'>
 
 
           <Switch>

@@ -5,7 +5,7 @@ import './Header.scss';
 class Header extends Component {
    render() {
       return (
-         <div className="header-container col-sm-12 col-lg-6 offset-lg-3">
+         <div className="header-container col-sm-12 col-lg-8 offset-lg-2">
             <div className="">
                <h1 className="text-success">Pocket Friend</h1>
                <span className="">Your pocket's best friend! {'😊'}</span>
