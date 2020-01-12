@@ -1,7 +1,4 @@
 import React from 'react';
-import { DateRangePicker } from 'react-dates';
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
 import DateRange from '../../models/date-range';
 import Expense from '../../models/Expense';
 import Income from '../../models/Income';
@@ -10,10 +7,12 @@ import { sortTypes } from '../../services/ApiService';
 import * as expenseService from '../../services/ExpenseService';
 import * as incomeService from '../../services/IncomeService';
 import Loader from '../Loader/Loader';
+import PFDayPicker from './DayPicker/DayPicker';
 import Expenses from './Expenses/Expenses';
 import Incomes from './Incomes/Incomes';
 import Summary from './Summary/Summary';
 import './Transactions.scss';
+
 
 
 let incomes = [];
@@ -47,7 +46,7 @@ class Transactions extends React.Component {
         this.getExpensesAsync();
     }
 
-    orderByDate(a, b) { return b.on_date - a.on_date }
+    orderByDate(a, b) { return b.on_date - a.on_date; }
 
     async getIncomesAsync() {
         incomes = [];
@@ -226,28 +225,7 @@ class Transactions extends React.Component {
         return (
             <div>
                 <div className={'summary-container'}>
-                    <DateRangePicker
-                        startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                        startDateId="start-date-input" // PropTypes.string.isRequired,
-                        endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                        endDateId="end-date-input" // PropTypes.string.isRequired,
-                        onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                        isOutsideRange={() => false}
-                        renderCalendarInfo={() => false}
-                        small={false}
-                        withPortal={true}
-                        noBorder={true}
-                        block={true}
-                        readOnly={true}
-                        hideKeyboardShortcutsPanel={true}
-                        numberOfMonths={1}
-                        firstDayOfWeek={1}
-                        transitionDuration={0}
-                        displayFormat={'DD.MM.YYYY'}
-                        onClose={() => setTimeout(() => this.getTransactions(), 100)}
-                    />
+                    <PFDayPicker />
                     <Summary incomes={incomesTotal} expenses={expensesTotal} />
                 </div>
 
