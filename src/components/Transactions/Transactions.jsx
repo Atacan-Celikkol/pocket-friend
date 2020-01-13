@@ -7,7 +7,7 @@ import { sortTypes } from '../../services/ApiService';
 import * as expenseService from '../../services/ExpenseService';
 import * as incomeService from '../../services/IncomeService';
 import Loader from '../Loader/Loader';
-import PFDayPicker from './DayPicker/DayPicker';
+import DayPicker from './DayPicker/DayPicker';
 import Expenses from './Expenses/Expenses';
 import Incomes from './Incomes/Incomes';
 import Summary from './Summary/Summary';
@@ -38,22 +38,23 @@ class Transactions extends React.Component {
     }
 
     componentDidMount() {
-        this.getTransactions();
+        // this.getTransactions();
     }
 
-    getTransactions() {
-        this.getIncomesAsync();
-        this.getExpensesAsync();
+    getTransactions(dates) {
+        const dateItems = { startDate: new Date(dates.startDate).getTime(), endDate: new Date(dates.endDate).getTime() }
+        this.getIncomesAsync(dateItems);
+        this.getExpensesAsync(dateItems);
     }
 
     orderByDate(a, b) { return b.on_date - a.on_date; }
 
-    async getIncomesAsync() {
+    async getIncomesAsync(dates) {
         incomes = [];
         incomesLoading = true;
         incomesTotal = 0;
         this.setState(this.state);
-        incomeService.GetIncomesAsync(this.state, 'on_date', sortTypes.Descending).then(x => {
+        incomeService.GetIncomesAsync(dates, 'on_date', sortTypes.Descending).then(x => {
             incomes = x;
             incomes.forEach(x => incomesTotal += x.amount);
             incomesLoading = false;
@@ -61,12 +62,12 @@ class Transactions extends React.Component {
         });
     }
 
-    async getExpensesAsync() {
+    async getExpensesAsync(dates) {
         expenses = [];
         expensesLoading = true;
         expensesTotal = 0;
         this.setState(this.state);
-        expenseService.GetExpensesAsync(this.state, 'on_date', sortTypes.Descending).then(x => {
+        expenseService.GetExpensesAsync(dates, 'on_date', sortTypes.Descending).then(x => {
             expenses = x;
             expenses.forEach(x => expensesTotal += x.amount);
             expensesLoading = false;
@@ -225,7 +226,7 @@ class Transactions extends React.Component {
         return (
             <div>
                 <div className={'summary-container'}>
-                    <PFDayPicker />
+                    <DayPicker getTransactions={this.getTransactions} />
                     <Summary incomes={incomesTotal} expenses={expensesTotal} />
                 </div>
 

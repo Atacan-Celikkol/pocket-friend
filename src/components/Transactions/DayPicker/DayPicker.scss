@@ -1,17 +1,23 @@
-@import '~react-day-picker/lib/style.css';
 @import '../../../colors.scss';
 
-.Range .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside),
-.DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-   background-color: $primary !important;
-   color           : $white;
-}
+.date-picker-container {
+   display              : inline-grid;
+   grid-template-columns: auto auto auto;
 
-.DayPicker-Day--selected.DayPicker-Day--outside {
-   background-color: darken($color: $primary, $amount: 35) !important;
-   color           : $white;
-}
+   button,
+   input {
+      border-radius: 0;
+   }
 
-.Range .DayPicker-Day {
-   border-radius: 0 !important;
+   input {
+      background-color: $gray-700;
+      color           : $white;
+
+      &:hover,
+      &:active,
+      &:focus {
+         transform: none !important;
+         color    : $white;
+      }
+   }
 }
