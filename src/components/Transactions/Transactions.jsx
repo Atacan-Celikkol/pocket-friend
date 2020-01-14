@@ -3,7 +3,6 @@ import DateRange from '../../models/date-range';
 import Expense from '../../models/Expense';
 import Income from '../../models/Income';
 import * as alertService from '../../services/AlertService';
-import { sortTypes } from '../../services/ApiService';
 import * as expenseService from '../../services/ExpenseService';
 import * as incomeService from '../../services/IncomeService';
 import Loader from '../Loader/Loader';
@@ -12,8 +11,6 @@ import Expenses from './Expenses/Expenses';
 import Incomes from './Incomes/Incomes';
 import Summary from './Summary/Summary';
 import './Transactions.scss';
-
-
 
 let incomes = [];
 let expenses = [];
@@ -37,24 +34,26 @@ class Transactions extends React.Component {
         this.updateExpense = this.updateExpense.bind(this);
     }
 
-    componentDidMount() {
-        // this.getTransactions();
-    }
-
     getTransactions(dates) {
         const dateItems = { startDate: new Date(dates.startDate).getTime(), endDate: new Date(dates.endDate).getTime() }
         this.getIncomesAsync(dateItems);
         this.getExpensesAsync(dateItems);
     }
 
-    orderByDate(a, b) { return b.on_date - a.on_date; }
+    orderByDate(a, b) {
+        if (b.on_date === a.on_date) {
+            return b.created - a.created;
+        } else {
+            return b.on_date - a.on_date;
+        }
+    }
 
     async getIncomesAsync(dates) {
         incomes = [];
         incomesLoading = true;
         incomesTotal = 0;
         this.setState(this.state);
-        incomeService.GetIncomesAsync(dates, 'on_date', sortTypes.Descending).then(x => {
+        incomeService.GetIncomesAsync(dates, 'on_date desc,created desc', '').then(x => {
             incomes = x;
             incomes.forEach(x => incomesTotal += x.amount);
             incomesLoading = false;
@@ -67,7 +66,7 @@ class Transactions extends React.Component {
         expensesLoading = true;
         expensesTotal = 0;
         this.setState(this.state);
-        expenseService.GetExpensesAsync(dates, 'on_date', sortTypes.Descending).then(x => {
+        expenseService.GetExpensesAsync(dates, 'on_date desc,created desc', '').then(x => {
             expenses = x;
             expenses.forEach(x => expensesTotal += x.amount);
             expensesLoading = false;
@@ -226,7 +225,7 @@ class Transactions extends React.Component {
         return (
             <div>
                 <div className={'summary-container'}>
-                    <DayPicker getTransactions={this.getTransactions} />
+                    <DayPicker getTransactions={this.getTransactions} isLoading={expensesLoading || incomesLoading} />
                     <Summary incomes={incomesTotal} expenses={expensesTotal} />
                 </div>
 

@@ -27,9 +27,8 @@ export async function FetchAsync(url, method, obj) {
    return fetch(url, { headers: { 'user-token': localStorage.getItem('UserToken') }, method: method, body: JSON.stringify(obj) })
       .then(res => {
          if (res.status === 400 || res.status === 401) {
-            
-            // localStorage.removeItem('UserToken');
-            // window.location.reload();
+            localStorage.removeItem('UserToken');
+            window.location.reload();
          }
          return res.json();
       });

@@ -1,14 +1,12 @@
 .loader-container {
-   width  : 100%;
    display: flex;
 
    .loader {
-      margin: auto;
-      height: 4vw;
+      display: flex;
+      margin : auto;
 
       svg {
-         height   : 100%;
-         // fill  : green;
+         margin: auto;
       }
    }
 }

@@ -1,29 +1,34 @@
+@import '../../../colors.scss';
+
 .summaries {
     display              : grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
 
     div {
         padding      : 10px 0;
-        border       : 1px solid #272727;
+        border       : 1px solid $gray-900;
         border-left  : 0;
         border-bottom: 0;
-        color        : #333;
+        color        : $gray-900;
 
         h4 {
             margin: 0;
         }
 
         &#incomes {
-            background-color: lighten($color: #5F0, $amount: 40);
+            background-color: lighten($color: $success, $amount: 24);
+
         }
 
         &#expenses {
-            background-color: lighten($color: #F00, $amount: 40);
+            background-color: lighten($color: $danger, $amount: 20);
+
         }
 
         &#balance {
-            background-color: lighten($color: #FF0, $amount: 40);
+            background-color: lighten($color: $warning, $amount: 18);
             border-right    : 0;
+            font-weight     : bold;
         }
     }
 }

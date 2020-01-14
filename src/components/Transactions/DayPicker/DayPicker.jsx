@@ -1,14 +1,18 @@
 import React from 'react';
 import '../../../models/date-range';
 import DateRange from '../../../models/date-range';
+import Loader from '../../Loader/Loader';
 import './DayPicker.scss';
 
-let endDateInput;
 export default class DayPicker extends React.Component {
    constructor(props) {
       super(props);
       this.state = new DateRange();
       this.onChange = this.onChange.bind(this);
+   }
+
+   componentDidMount() {
+      this.props.getTransactions(this.state);
    }
 
    onChange(e) {
@@ -24,14 +28,16 @@ export default class DayPicker extends React.Component {
 
       return (
          <div className="date-picker-container">
-            <input className="btn btn-dark" type="date" name="startDate" onChange={this.onChange} value={this.state.startDate} autoFocus />
-            <button className="btn btn-primary" disabled={!startDate || !endDate} onClick={() => this.props.getTransactions(this.state)}>
-               {startDate && endDate && 'Ok'}
+            <input className={!startDate ? ' border-danger' : ''} type="date" name="startDate" onChange={this.onChange} value={this.state.startDate} />
+            <button className="btn btn-primary" disabled={!startDate || !endDate || this.props.isLoading} onClick={() => this.props.getTransactions(this.state)}>
+               {this.props.isLoading ? <Loader color={"#FFF"} /> :
+                  startDate && endDate && 'Ok'
+               }
                {!startDate && !endDate && 'Select dates'}
                {startDate && !endDate && 'Select end date'}
                {!startDate && endDate && 'Select start date'}
             </button>
-            <input id="endDateInput" className={this.state.endDate === '' ? "btn btn-dark border-danger" : "btn btn-dark"} type="date" name="endDate" onChange={this.onChange} min={this.state.startDate} value={this.state.endDate} />
+            <input className={!endDate ? ' border-danger' : ''} type="date" name="endDate" onChange={this.onChange} min={this.state.startDate} value={this.state.endDate} />
          </div>
       );
    }

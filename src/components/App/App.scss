@@ -41,7 +41,8 @@
       box-shadow: 0 0 20px transparentize($color: $color, $amount: 0.8);
       border    : 1px solid transparentize($color: $color, $amount: 0.8);
 
-      .swal2-title {
+      .swal2-title,
+      .swal2-content {
         color: $color;
       }
 

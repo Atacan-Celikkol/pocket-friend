@@ -1,14 +1,16 @@
+@import '../../colors.scss';
+
 .summary-container {
     display              : grid;
     grid-template-columns: auto;
     text-align           : center;
-    border               : 1px solid #272727;
+    border               : 1px solid $gray-900;
 }
 
 .incoming-income-date {
-    color: #3f3;
+    color: $success;
 }
 
 .incoming-expense-date {
-    color: #f33;
+    color: $danger;
 }

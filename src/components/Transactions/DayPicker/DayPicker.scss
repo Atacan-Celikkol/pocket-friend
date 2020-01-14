@@ -1,23 +1,37 @@
 @import '../../../colors.scss';
 
 .date-picker-container {
-   display              : inline-grid;
-   grid-template-columns: auto auto auto;
+   display              : grid;
+   grid-template-columns: repeat(3, 1fr);
+   height               : 38px;
 
    button,
    input {
       border-radius: 0;
+
+      &:hover,
+      &:active,
+      &:focus {
+         transform : none !important;
+         color     : $white;
+         outline   : none;
+         box-shadow: none;
+      }
    }
 
    input {
       background-color: $gray-700;
       color           : $white;
+      padding         : 0 5px;
+      text-align      : center;
+      border          : none;
+      transition      : 0.25s;
+      cursor          : pointer;
 
       &:hover,
       &:active,
       &:focus {
-         transform: none !important;
-         color    : $white;
+         background-color: $gray-800;
       }
    }
 }
