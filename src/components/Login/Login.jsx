@@ -48,11 +48,11 @@ export function LoginComponent(props) {
       <form onSubmit={login}>
          <div className="form-group">
             <label htmlFor="email">Email address</label>
-            <input type="email" className="form-control" id="email" placeholder="Enter email" onChange={(e) => user.login = e.target.value} />
+            <input type="email" className="form-control" id="email" placeholder="Enter email" onChange={(e) => user.login = e.target.value} autoFocus required />
          </div>
          <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="form-control" id="password" placeholder="Password" onChange={(e) => user.password = e.target.value} />
+            <input type="password" className="form-control" id="password" placeholder="Password" onChange={(e) => user.password = e.target.value} required />
          </div>
          <button type="submit" className="btn btn-primary">Login</button>
          <button type="button" className="btn btn-success ml-2" onClick={props.isLogin}>Register</button>
@@ -80,15 +80,15 @@ export function RegisterComponent() {
       <form onSubmit={register}>
          <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input type="text" className="form-control" id="name" placeholder="Enter name" onChange={(e) => user.name = e.target.value} />
+            <input type="text" className="form-control" id="name" placeholder="Enter name" onChange={(e) => user.name = e.target.value} autoFocus required />
          </div>
          <div className="form-group">
             <label htmlFor="email">Email address</label>
-            <input type="email" className="form-control" id="email" placeholder="Enter email" onChange={(e) => user.email = e.target.value} />
+            <input type="email" className="form-control" id="email" placeholder="Enter email" onChange={(e) => user.email = e.target.value} required />
          </div>
          <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="form-control" id="password" placeholder="Password" onChange={(e) => user.password = e.target.value} />
+            <input type="password" className="form-control" id="password" placeholder="Password" onChange={(e) => user.password = e.target.value} required />
          </div>
          <button type="submit" className="btn btn-success">Register</button>
       </form>

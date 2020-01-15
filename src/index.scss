@@ -21,20 +21,23 @@ html {
     }
   }
 
-  .btn,
-  .form-control {
-    transition: 250ms;
+  input:required {
+    &:invalid {
+      border-color : $danger !important;
+      outline-color: $danger !important;
+      box-shadow   : 0 0 10px $danger !important;
+    }
+
+
+    &:valid {
+      border-color : $success !important;
+      outline-color: $success !important;
+      box-shadow   : 0 0 10px $success !important;
+    }
   }
 
-  .form-control:hover,
-  .form-control:active,
-  .form-control:focus {
-    transform: scale(1.02);
-  }
-
-  .btn:hover,
-  .btn:active,
-  .btn:focus {
-    transform: scale(1.1);
+  button,
+  input {
+    border-radius: 0 !important;
   }
 }

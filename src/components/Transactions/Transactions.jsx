@@ -102,21 +102,18 @@ class Transactions extends React.Component {
         const income = new Income();
         const queueItems = [
             {
-                input: 'text', title: 'Amount', inputValidator: (value) => {
-                    if (!value || isNaN(value)) {
-                        return 'I said amount... 😢';
-                    }
-                }
+                title: 'Amount',
+                html: <input type="number" className={"swal2-input w-100"} onChange={x => income.amount = x.target.value} step="0.01" min="0.01" required autoFocus />
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"swal2-input"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} required autoFocus />
             },
             { input: 'text', title: 'Description' }
         ];
         alertService.ShowQueue(['1', '2', '3'], queueItems).then(result => {
             if (result.value) {
-                income.amount = Number(result.value[0]);
+                income.amount = parseFloat(income.amount);
                 income.description = result.value[2];
                 incomeService.CreateIncomeAsync(income).then(x => {
                     incomes.push(x);
@@ -132,21 +129,18 @@ class Transactions extends React.Component {
         const expense = new Expense();
         const queueItems = [
             {
-                input: 'text', title: 'Amount', inputValidator: (value) => {
-                    if (!value || isNaN(value)) {
-                        return 'I said amount... 😢';
-                    }
-                }
+                title: 'Amount',
+                html: <input type="number" className={"swal2-input w-100"} onChange={x => expense.amount = x.target.value} step="0.01" min="0.01" required autoFocus />
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"swal2-input"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} required autoFocus />
             },
             { input: 'text', title: 'Description' }
         ];
         alertService.ShowQueue(['1', '2', '3'], queueItems).then(result => {
             if (result.value) {
-                expense.amount = Number(result.value[0]);
+                expense.amount = parseFloat(expense.amount)
                 expense.description = result.value[2];
                 expenseService.CreateExpenseAsync(expense).then(x => {
                     expenses.push(x);
@@ -162,21 +156,18 @@ class Transactions extends React.Component {
         const income = new Income(item.amount, item.description, item.on_date);
         const queueItems = [
             {
-                input: 'text', inputValue: income.amount, title: 'Amount', inputValidator: (value) => {
-                    if (!value || isNaN(value)) {
-                        return 'I said amount... 😢';
-                    }
-                }
+                title: 'Amount',
+                html: <input type="number" className={"swal2-input w-100"} onChange={x => income.amount = x.target.value} step="0.01" min="0.01" required autoFocus />
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"swal2-input"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={income.on_date} onChange={x => income.on_date = x.target.value} required autoFocus />
             },
             { input: 'text', inputValue: income.description, title: 'Description' }
         ];
         alertService.ShowQueue(['1', '2', '3'], queueItems).then(result => {
             if (result.value) {
-                income.amount = Number(result.value[0]);
+                income.amount = parseFloat(income.amount);
                 income.description = result.value[2];
 
                 incomeService.UpdateIncomeAsync(income, item.objectId).then(x => {
@@ -193,21 +184,18 @@ class Transactions extends React.Component {
         const expense = new Expense(item.amount, item.description, item.on_date);
         const queueItems = [
             {
-                input: 'text', inputValue: expense.amount, title: 'Amount', inputValidator: (value) => {
-                    if (!value || isNaN(value)) {
-                        return 'I said amount... 😢';
-                    }
-                }
+                title: 'Amount',
+                html: <input type="number" className={"swal2-input w-100"} onChange={x => expense.amount = x.target.value} step="0.01" min="0.01" required autoFocus />
             },
             {
                 title: 'Date',
-                html: <input type="date" className={"swal2-input"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} />
+                html: <input type="date" className={"swal2-input"} defaultValue={expense.on_date} onChange={x => expense.on_date = x.target.value} required autoFocus />
             },
             { input: 'text', inputValue: expense.description, title: 'Description' }
         ];
         alertService.ShowQueue(['1', '2', '3'], queueItems).then(result => {
             if (result.value) {
-                expense.amount = Number(result.value[0]);
+                expense.amount = parseFloat(expense.amount);
                 expense.description = result.value[2];
 
                 expenseService.UpdateExpenseAsync(expense, item.objectId).then(x => {
