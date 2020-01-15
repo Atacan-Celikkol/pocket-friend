@@ -1,4 +1,5 @@
 @import '../../colors.scss';
+@import '~sweetalert2/dist/sweetalert2.min.css';
 
 @mixin themable($theme-name, $container-bg, $color) {
   .#{$theme-name} {
